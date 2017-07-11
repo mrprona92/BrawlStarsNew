@@ -1,0 +1,16 @@
+{
+  "dotaId": "diffusal_blade_2",
+  "attrib": "+ 20/<font color=\"#ffffff\"><b>35</b></font> Agility<br/>+ 6/<font color=\"#ffffff\"><b>15</b></font> Intelligence",
+  "cd": 8.0,
+  "components": ["diffusal_blade"],
+  "qual": "artifact",
+  "notes": "Instantly kills summoned units.Slow lasts 4 seconds.",
+  "desc": "Active: Purge - Purges a target unit, removing buffs, slowing, and dealing damage if it is a summoned unit.<br/>Passive: Feedback - Each attack burns 50 mana from the target, and deals 80% of the mana burned as physical damage. Burns 16 mana per attack from melee illusions and 8 mana per attack from ranged illusions. Does not stack with other manabreak abilities.",
+  "dname": "Diffusal Blade lvl2",
+  "mc": false,
+  "img": "diffusal_blade_2_lg.png",
+  "lore": "An enchanted blade that allows the user to cut straight into the enemy\u0027s soul.",
+  "id": 196,
+  "created": true,
+  "cost": 3850
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="enemy_team">@color/red</color>
+    <color name="ally_team">@color/green</color>
+    <color name="colorPrimary">#1d68bf</color>
+
+    <!-- COMMON -->
+    <color name="cmn_black">#000</color>
+    <color name="cmn_white">#ffffff</color>
+    <color name="cmn_transparent">#00000000</color>
+    <color name="cmn_gray">#757575</color>
+    <color name="cmn_gray_hint">#b3b3b3</color>
+    <color name="cmn_gray_light">#EFEFEF</color>
+    <color name="cmn_gray_bg">#f7f7f7</color>
+
+    <color name="cmn_blue">#085EAB</color>
+    <color name="cmn_green">#00b277</color><![CDATA[
+
+
+    >
+    ]]>
+    <color name="cmn_text_dark">#807f7f</color>
+    <color name="cmn_text_black">#4a4b4c</color>
+    <color name="cmn_text_red">#c62827</color>
+    <color name="cmn_red_text_view">#b23222</color>
+    <color name="cmn_blue_text_view">#1665c1</color>
+    <color name="cmn_background">#f1f2f2</color>
+    <color name="cmn_background_divider">#DDD</color>
+
+    <!-- MENU -->
+
+    <!--Rate, Chart Color-->
+    <color name="buy_color">@color/cmn_red_text_view</color>
+
+    <!--TABBAR-->
+    <color name="tabbar_normal">#e6e6e6</color>
+    <color name="tabbar_active">#FFD14337</color>
+
+    <!-- RANKING -->
+    <color name="ranking_row_bgr_tag_recommend">#000000</color>
+    <color name="ranking_bgr_row">#151515</color>
+
+    <!-- TRADE SETTING -->
+
+    <!-- TRADE STATUS -->
+
+
+    <!-- COPIER MANAGEMENT -->
+
+    <!-- INDIVIDUAL -->
+    <color name="cmn_text">#4c4c4c</color>
+    <color name="cmn_text_gray">#888</color>
+    <color name="bg_cmn_gray">#F1F2F2</color>
+
+    <!-- USER DETAIL -->
+
+    <!-- POSITION -->
+
+    <!-- ORDER HISTORY -->
+
+    <!-- RATE INFO -->
+
+    <!-- TRANSFER/HISTORY -->
+
+    <!-- SETTING -->
+
+    <!-- MEMBER MNGT -->
+
+    <!-- MEMBER CHANGE -->
+
+    <!-- CONTEST HISTORY -->
+
+</resources>

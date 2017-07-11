@@ -1,0 +1,19 @@
+{
+  "dotaId": "bloodstone",
+  "id": 121,
+  "img": "bloodstone_lg.png",
+  "dname": "Bloodstone",
+  "qual": "epic",
+  "cost": 4875,
+  "desc": "Begins with 12 charges, and gains a charge each time an enemy hero dies within 1675 range. Each charge grants 1 mana regeneration per second and reduces respawn time by 3 seconds, but cannot reduce respawn time to less than 1 second. If the bearer dies, 500 + 30 health per charge is restored to all allies within a 1675 radius, while the Bloodstone loses a third of its charges.",
+  "notes": "Only the first Bloodstone will gain charges.",
+  "attrib": "+ 475 Health<br/>+ 425 Mana<br/>+ 9 HP Regeneration<br/>+ 200% Mana Regeneration",
+  "mc": false,
+  "cd": 300,
+  "lore": "The Bloodstone's bright ruby color is unmistakable on the battlefield, as the owner seems to have infinite vitality and spirit.",
+  "components": [
+    "soul_ring",
+    "soul_booster"
+  ],
+  "created": true
+}
