@@ -10,6 +10,6 @@ package com.mrprona.dota2assitant.base.configs;
 public class ScreenIDs {
 
     public enum ScreenTab {
-        LIVE, COUNTERPICK , QUIZ, MENU;
+        HERO, NEWS , LIVE, MENU;
     }
 }

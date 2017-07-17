@@ -26,12 +26,19 @@
             android:name="com.mrprona.dota2assitant.base.activity.SteamLoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/Infodota.Dark" />
-        <activity
+     <!--   <activity
             android:name="com.mrprona.dota2assitant.base.activity.ListHolderActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/splashScreenTheme"
+            android:windowSoftInputMode="adjustNothing"></activity>-->
+        <activity
+            android:name="com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/splashScreenTheme"
             android:windowSoftInputMode="adjustNothing"></activity>
+
         <activity
             android:name="com.mrprona.dota2assitant.hero.activity.HeroInfoActivity"
             android:configChanges="keyboard|orientation|screenSize"

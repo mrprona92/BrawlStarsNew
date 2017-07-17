@@ -27,7 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mrprona.dota2assitant.R;
-import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
+import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
 import com.mrprona.dota2assitant.base.adapter.OnItemClickListener;
 import com.mrprona.dota2assitant.base.fragment.SCBaseFragment;
 import com.mrprona.dota2assitant.base.fragment.SearchableFragment;
@@ -69,13 +69,10 @@ public class HeroesList extends SCBaseFragment implements SearchableFragment, Re
     private SpiceManager mSpiceManager = new SpiceManager(LocalSpiceService.class);
     private String mSearch = null;
     private String mFilter = null;
-    private Map<Long, Integer> mMapTypeHero;
 
     @Override
     public void onStart() {
         Activity activity = getActivity();
-
-        mMapTypeHero = ListHolderActivity.getMapTypeHero();
 
         if (!mSpiceManager.isStarted()) {
             mSpiceManager.start(getActivity());
@@ -98,7 +95,7 @@ public class HeroesList extends SCBaseFragment implements SearchableFragment, Re
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        ActionMenuView actionMenuView = ((ListHolderActivity) getActivity()).getActionMenuView();
+        ActionMenuView actionMenuView = ((HorizontalNtbActivity) getActivity()).getActionMenuView();
         Menu actionMenu = actionMenuView.getMenu();
         actionMenu.clear();
         actionMenuView.setVisibility(View.GONE);
@@ -127,7 +124,7 @@ public class HeroesList extends SCBaseFragment implements SearchableFragment, Re
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("carousel", !preferences.getBoolean("carousel", false));
                 editor.commit();
-                ((ListHolderActivity) getActivity()).replaceFragment(new HeroesList());
+                ((HorizontalNtbActivity) getActivity()).replaceFragment(new HeroesList());
                 return true;
             case R.id.filter:
                 PopupMenu popup = new PopupMenu(getActivity(), getActivity().findViewById(item.getItemId()));
@@ -331,7 +328,7 @@ public class HeroesList extends SCBaseFragment implements SearchableFragment, Re
             pager.setAdapter(adapter);
         } else if (o instanceof Hero.List) {
             Hero.List result = (Hero.List) o;
-            final HeroesAdapter adapter = new HeroesAdapter(result, mActivity, mMapTypeHero);
+            final HeroesAdapter adapter = new HeroesAdapter(result, mActivity);
             Filter filter = adapter.getFilter();
             filter.filter(mSearch);
             gridView.setAdapter(adapter);

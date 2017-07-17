@@ -12,7 +12,7 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.mrprona.dota2assitant.R;
-import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
+import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
 
 import java.util.Map;
 
@@ -36,7 +36,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(String messageTitle, String messageBody) {
-        Intent intent = new Intent(this, ListHolderActivity.class);
+        Intent intent = new Intent(this, HorizontalNtbActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);

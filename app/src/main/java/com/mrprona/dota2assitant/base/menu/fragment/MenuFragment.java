@@ -11,10 +11,9 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.mrprona.dota2assitant.R;
-import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
+import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
 import com.mrprona.dota2assitant.base.fragment.SCBaseFragment;
 import com.mrprona.dota2assitant.base.menu.adapter.DHMenuAdapter;
 
@@ -30,9 +29,9 @@ import butterknife.Unbinder;
  */
 public class MenuFragment extends SCBaseFragment implements DHMenuAdapter.OnItemClickListener{
 
-    private static WeakReference<ListHolderActivity> mActivityRef;
+    private static WeakReference<HorizontalNtbActivity> mActivityRef;
 
-    public static void updateActivity(ListHolderActivity activity) {
+    public static void updateActivity(HorizontalNtbActivity activity) {
         mActivityRef = new WeakReference<>(activity);
     }
 
@@ -43,12 +42,11 @@ public class MenuFragment extends SCBaseFragment implements DHMenuAdapter.OnItem
     protected View mView;
     protected Unbinder mUnbinder;
 
-    private AdView mAdView;
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
-        ActionMenuView actionMenuView = ((ListHolderActivity) getActivity()).getActionMenuView();
+        ActionMenuView actionMenuView = ((HorizontalNtbActivity) getActivity()).getActionMenuView();
         Menu actionMenu = actionMenuView.getMenu();
         actionMenu.clear();
         actionMenuView.setVisibility(View.GONE);

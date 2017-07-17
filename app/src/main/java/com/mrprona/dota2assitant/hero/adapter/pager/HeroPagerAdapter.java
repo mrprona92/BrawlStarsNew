@@ -7,9 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.mrprona.dota2assitant.R;
 import com.mrprona.dota2assitant.hero.api.Hero;
-import com.mrprona.dota2assitant.hero.api.TalentTree;
 import com.mrprona.dota2assitant.hero.fragment.HeroDefaultItemBuild;
-import com.mrprona.dota2assitant.hero.fragment.HeroResponses;
 import com.mrprona.dota2assitant.hero.fragment.HeroSkills;
 import com.mrprona.dota2assitant.hero.fragment.HeroStatInfo;
 
@@ -37,8 +35,6 @@ public class HeroPagerAdapter extends FragmentStatePagerAdapter {
                 return HeroSkills.newInstance(hero);
             case 2:
                 return HeroDefaultItemBuild.newInstance(hero);
-            case 3:
-                return HeroResponses.newInstance(hero,context);
         }
         return null;
     }

@@ -132,7 +132,7 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
                 .build();
 
         // Start loading the ad in the background.
-        mAdView.loadAd(adRequest);
+        //mAdView.loadAd(adRequest);
 
 
         ButterKnife.bind(this, v);

@@ -19,7 +19,7 @@ import android.util.Pair;
 import com.mrprona.dota2assitant.BeanContainer;
 import com.mrprona.dota2assitant.R;
 import com.mrprona.dota2assitant.base.activity.BaseActivity;
-import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
+import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
 import com.mrprona.dota2assitant.base.remote.BaseRemoteServiceImpl;
 import com.mrprona.dota2assitant.base.service.update.UpdateService;
 
@@ -142,7 +142,7 @@ public class UpdateUtils {
         int currentAPIVersion = Build.VERSION.SDK_INT;
         if (currentAPIVersion >= android.os.Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(mContext, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) ListHolderActivity.getAppContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) HorizontalNtbActivity.getAppContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                     android.support.v7.app.AlertDialog.Builder alertBuilder = new android.support.v7.app.AlertDialog.Builder(mContext);
                     alertBuilder.setCancelable(true);
                     alertBuilder.setTitle("Permission necessary");

@@ -169,9 +169,9 @@ public class ListHolderActivity extends BaseActivity implements SearchView.OnQue
             }
         }*/
 
-        Chartboost.onStart(this);
-        super.onStart();
-    }
+    Chartboost.onStart(this);
+    super.onStart();
+}
 
 
     @Override
@@ -216,7 +216,7 @@ public class ListHolderActivity extends BaseActivity implements SearchView.OnQue
 
         AppEventsLogger.activateApp(this);
 
-        MenuFragment.updateActivity(this);
+       // MenuFragment.updateActivity(this);
 
         Log.d(TAG, "onCreate() called with: " + "savedInstanceState = [" + savedInstanceState + "]");
 
@@ -365,7 +365,7 @@ public class ListHolderActivity extends BaseActivity implements SearchView.OnQue
     }
 
 
-    @Override
+       @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             default:
@@ -405,13 +405,13 @@ public class ListHolderActivity extends BaseActivity implements SearchView.OnQue
     @OnClick(R.id.tabConterPick)
     public void onClickTabCounterPick() {
         clearBackStack();
-        openScreen(ScreenIDs.ScreenTab.COUNTERPICK, MenuFragment.class, null, true, false);
+        openScreen(ScreenIDs.ScreenTab.HERO, MenuFragment.class, null, true, false);
     }
 
     @OnClick(R.id.tabQuiz)
     public void onClickTabQuiz() {
         clearBackStack();
-        openScreen(ScreenIDs.ScreenTab.QUIZ, MenuFragment.class, null, true, false);
+        openScreen(ScreenIDs.ScreenTab.HERO, MenuFragment.class, null, true, false);
     }
 
     @OnClick(R.id.tabMenu)
@@ -444,12 +444,12 @@ public class ListHolderActivity extends BaseActivity implements SearchView.OnQue
                 lblTabHero.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_tab1_live, 0, 0);
                 lblTabHero.setTextColor(tabHighLightTextColor);
                 break;
-            case COUNTERPICK:
+            case NEWS:
                 tabCounterPick.setBackgroundResource(R.color.tabbar_active);
                 lblTabCounter.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_tab2_counterpick, 0, 0);
                 lblTabCounter.setTextColor(tabHighLightTextColor);
                 break;
-            case QUIZ:
+            case HERO:
                 tabQuiz.setBackgroundResource(R.color.tabbar_active);
                 lblTabQuiz.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_tab3_quiz, 0, 0);
                 lblTabQuiz.setTextColor(tabHighLightTextColor);

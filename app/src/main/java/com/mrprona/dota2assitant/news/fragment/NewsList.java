@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mrprona.dota2assitant.base.activity.BaseActivity;
-import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
+import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
 import com.mrprona.dota2assitant.base.fragment.UpdatableRecyclerFragment;
 import com.mrprona.dota2assitant.base.view.EndlessRecycleScrollListener;
 import com.mrprona.dota2assitant.news.activity.NewsItemActivity;
@@ -38,7 +38,7 @@ public class NewsList extends UpdatableRecyclerFragment<NewsItem, NewsItemViewHo
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
-        ActionMenuView actionMenuView = ((ListHolderActivity) getActivity()).getActionMenuView();
+        ActionMenuView actionMenuView = ((HorizontalNtbActivity) getActivity()).getActionMenuView();
         Menu actionMenu = actionMenuView.getMenu();
         actionMenu.clear();
         actionMenuView.setVisibility(View.GONE);

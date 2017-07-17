@@ -15,9 +15,7 @@ import com.mrprona.dota2assitant.base.dao.Helper;
 import com.mrprona.dota2assitant.base.service.LocalSpiceService;
 import com.mrprona.dota2assitant.base.service.LocalUpdateService;
 import com.mrprona.dota2assitant.base.task.UpdateLoadRequest;
-import com.mrprona.dota2assitant.base.util.UiUtils;
 import com.octo.android.robospice.SpiceManager;
-import com.octo.android.robospice.persistence.DurationInMillis;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
@@ -53,17 +51,18 @@ public class SplashActivity extends Activity implements RequestListener<String> 
             mSpiceManager.start(getApplicationContext());
             final int currentVersion = localUpdateService.getVersion(getApplicationContext());
             if (currentVersion != Helper.DATABASE_VERSION) {
-                isNeedUpdate=true;
+                isNeedUpdate = true;
                 Handler handlerTimer = new Handler();
-                handlerTimer.postDelayed(new Runnable(){
+                handlerTimer.postDelayed(new Runnable() {
                     public void run() {
                         callUpdateResquest();
-                    }}, 5000);
-            }else{
+                    }
+                }, 5000);
+            } else {
                 int secondsDelayed = 1;
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
-                        startActivity(new Intent(SplashActivity.this, ListHolderActivity.class));
+                        startActivity(new Intent(SplashActivity.this, HorizontalNtbActivity.class));
                         finish();
                     }
                 }, secondsDelayed * 1000);
@@ -73,7 +72,7 @@ public class SplashActivity extends Activity implements RequestListener<String> 
     }
 
 
-    private void callUpdateResquest(){
+    private void callUpdateResquest() {
         mSpiceManager.execute(new UpdateLoadRequest(getApplicationContext()), this);
     }
 
@@ -98,7 +97,7 @@ public class SplashActivity extends Activity implements RequestListener<String> 
         int secondsDelayed = 1;
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                startActivity(new Intent(SplashActivity.this, ListHolderActivity.class));
+                startActivity(new Intent(SplashActivity.this, HorizontalNtbActivity.class));
                 finish();
             }
         }, secondsDelayed * 1000);

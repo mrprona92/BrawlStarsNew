@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.mrprona.dota2assitant.R;
-import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
+import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
@@ -72,7 +72,7 @@ public class InfoParserActivity extends Activity implements RequestListener {
             runTask();
         } else {
             Toast.makeText(this, "Done", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this, ListHolderActivity.class));
+            startActivity(new Intent(this, HorizontalNtbActivity.class));
             finish();
         }
     }

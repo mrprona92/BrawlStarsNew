@@ -27,14 +27,12 @@ import java.util.Map;
 public class HeroesAdapter extends BaseRecyclerAdapter<Hero, HeroHolder> implements Filterable {
     private List<Hero> filtered;
     private Context mContext;
-    private Map<Long, Integer> mMapType;
 
 
-    public HeroesAdapter(List<Hero> heroes, Context current, Map<Long, Integer> mMapType) {
+    public HeroesAdapter(List<Hero> heroes, Context current) {
         super(heroes);
         filtered = mData;
         this.mContext = current;
-        this.mMapType = mMapType;
     }
 
     @Override

@@ -10,9 +10,8 @@ import android.support.v4.content.ContextCompat;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
-
 import com.mrprona.dota2assitant.R;
+import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
 /**
  * Project : TRS Social
  * Author :Binh.TH
@@ -24,12 +23,12 @@ public class SCBaseDialog extends Dialog {
 
     protected Context mContext;
     private Handler mHandler;
-    protected ListHolderActivity mActivity;
+    protected HorizontalNtbActivity mActivity;
 
     public SCBaseDialog(Context context) {
         super(context);
         mContext = context;
-        mActivity=(ListHolderActivity) context;
+        mActivity=(HorizontalNtbActivity) context;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.MATCH_PARENT);

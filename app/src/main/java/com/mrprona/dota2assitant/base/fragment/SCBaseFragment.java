@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
 import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
 
 import butterknife.ButterKnife;
@@ -28,7 +29,7 @@ public abstract class SCBaseFragment extends Fragment {
 
     private Bundle mResultBundle;
 
-    protected ListHolderActivity mActivity;
+    protected HorizontalNtbActivity mActivity;
     protected boolean mIsViewInitialized = false;
     protected View mView;
     protected Unbinder mUnbinder;
@@ -37,7 +38,7 @@ public abstract class SCBaseFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mActivity = (ListHolderActivity) context;
+        mActivity = (HorizontalNtbActivity) context;
     }
 
     @Override
@@ -48,7 +49,7 @@ public abstract class SCBaseFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mActivity = (ListHolderActivity) getActivity();
+        mActivity = (HorizontalNtbActivity) getActivity();
         if (mView == null) {
             mView = inflater.inflate(getViewContent(), container, false);
             mUnbinder = ButterKnife.bind(this, mView);
@@ -126,28 +127,6 @@ public abstract class SCBaseFragment extends Fragment {
     public void onComeBackFragment(Bundle resultBundle) {
     }
 
-    public void setOnComeBack(Bundle resultBundle) {
-        mResultBundle = resultBundle;
-        if (mResultBundle == null) {
-            mResultBundle = new Bundle();
-        }
-    }
-
-    protected void showToast(String message) {
-        if (getActivity() != null && message != null)
-            Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
-    }
-
-    protected void showToast(int message) {
-        if (getActivity() != null && message > 0) Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
-    }
-
-    protected void openActivity(Class<? extends ListHolderActivity> activityClass, Bundle bundles) {
-        Intent i = new Intent(mActivity, activityClass);
-        if (bundles != null) i.putExtras(bundles);
-        startActivity(i);
-    }
-
 
     protected void hideProgressDialog() {
         hideProgressDialog(true);
@@ -157,37 +136,9 @@ public abstract class SCBaseFragment extends Fragment {
         if(mActivity != null) mActivity.hideProgressDialog(isWait);
     }
 
-    /**
-     * Show a progress dialog.
-     *
-     * @param message
-     * @param cancelable
-     */
-    public void showProgressDialog(String message, boolean cancelable) {
-        ((ListHolderActivity) getActivity()).showProgressDialog(message, cancelable);
-    }
-
-    /**
-     * Show progress dialog with cancelable = false.
-     *
-     * @param message
-     */
-    public void showProgressDialog(final String message) {
-        showProgressDialog(message, false);
-    }
-
     public void showProgressDialog() {
         if(mActivity != null) mActivity.showProgressDialog(null, true); //"Now Loading..."
     }
-
-    protected void showDialog(final int message) {
-        if(mActivity != null) mActivity.showAlertDialog(message);
-    }
-
-    protected void showDialog(final String message) {
-        if(mActivity != null) mActivity.showAlertDialog(message);
-    }
-
 
     @Override
     public void onDestroyView() {
