@@ -11,8 +11,8 @@ import com.mrprona.dota2assitant.R;
 import com.mrprona.dota2assitant.base.adapter.BaseRecyclerAdapter;
 import com.mrprona.dota2assitant.base.util.SteamUtils;
 import com.mrprona.dota2assitant.hero.adapter.holder.HeroHolder;
-import com.mrprona.dota2assitant.hero.api.Hero;
 import com.bumptech.glide.Glide;
+import com.mrprona.dota2assitant.hero.api.Hero;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,25 +58,28 @@ public class HeroesAdapter extends BaseRecyclerAdapter<Hero, HeroHolder> impleme
         Hero hero = getItem(position);
         holder.name.setText(hero.getLocalizedName());
         final int sdk = android.os.Build.VERSION.SDK_INT;
-        if (mMapType != null && mMapType.containsKey(hero.getId())) {
-            int type = mMapType.get(hero.getId());
 
-            if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                if (type == 0) {
-                    holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.overviewicon_str));
-                } else if (type == 1) {
-                    holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.overviewicon_agi));
-                } else if (type == 2) {
-                    holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.overviewicon_int));
-                }
-            } else {
-                if (type == 0) {
-                    holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.overviewicon_str));
-                } else if (type == 1) {
-                    holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.overviewicon_agi));
-                } else if (type == 2) {
-                    holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.overviewicon_int));
-                }
+        String type = hero.getTier();
+
+        if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            if (type.equalsIgnoreCase("common")) {
+                holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.common_character));
+            } else if (type.equalsIgnoreCase("rare")) {
+                holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.rare));
+            } else if (type.equalsIgnoreCase("epic")) {
+                holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.epic));
+            } else if (type.equalsIgnoreCase("legendary")) {
+                holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.legendary));
+            }
+        } else {
+            if (type.equalsIgnoreCase("common")) {
+                holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.common_character));
+            } else if (type.equalsIgnoreCase("rare")) {
+                holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.rare));
+            } else if (type.equalsIgnoreCase("epic")) {
+                holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.epic));
+            } else if (type.equalsIgnoreCase("legendary")) {
+                holder.heroType.setImageDrawable(mContext.getResources().getDrawable(R.drawable.legendary));
             }
         }
 

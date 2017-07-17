@@ -1,0 +1,59 @@
+[
+  {
+    "hero": {
+      "tier": "epic",
+      "localized_name": "Piper",
+      "name": "npc_brawl_hero_piper",
+      "id": 16
+    },
+    "lore": "Piper is a long ranged sniper that does more damage the further she is. She thrives in maps where there are a lot of obstacles where it allows her to hide.",
+    "mDefaultAbility": {
+      "attackDeplay": "0.1 s",
+      "damage": "460",
+      "description": "Piper fires a sniper shot from the tip of her parasol. The shot gains more oompf the farther it flies!",
+      "name": "Gunbrella",
+      "range": "10.5 tiles",
+      "timeCharger": "3 s",
+      "typeAbility": "Attack"
+    },
+    "mSuperAbility": {
+      "attackDeplay": "None",
+      "damage": "300",
+      "description": "Piper hops away to avoid pushy suitors. She leaves them a lady\u0027s favor though: three live grenades from her garter!",
+      "name": "Poppin\u0027",
+      "range": "8 tiles",
+      "typeAbility": "Charge"
+    },
+    "modeRanking": [
+      "6",
+      "4",
+      "3",
+      "6"
+    ],
+    "priority": [
+      "1. attack",
+      "2. super",
+      "3. health"
+    ],
+    "progress8Info": [
+      "50%",
+      "100%",
+      "40%",
+      "100%",
+      "70%",
+      "60%",
+      "70%",
+      "40%"
+    ],
+    "role5Info": {
+      "hitpoints": "600",
+      "role": "Ranged Attacker",
+      "speed": "2.5 tiles per second",
+      "tier": "Epic",
+      "type": "Ranged"
+    },
+    "strengths": [],
+    "tips": [],
+    "weaknesses": []
+  }
+]

@@ -1,30 +1,17 @@
 package com.mrprona.dota2assitant.base.dao;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.mrprona.dota2assitant.BeanContainer;
-import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
-import com.mrprona.dota2assitant.base.service.LocalSpiceService;
-import com.mrprona.dota2assitant.base.service.LocalUpdateService;
-import com.mrprona.dota2assitant.base.util.FileUtils;
 import com.mrprona.dota2assitant.hero.api.HeroStats;
-import com.mrprona.dota2assitant.hero.api.TalentTree;
 import com.mrprona.dota2assitant.hero.dao.AbilityDao;
 import com.mrprona.dota2assitant.hero.dao.HeroDao;
 import com.mrprona.dota2assitant.hero.dao.HeroStatsDao;
 import com.mrprona.dota2assitant.item.dao.ItemDao;
-import com.octo.android.robospice.SpiceManager;
-import com.parser.JsonSimpleExample;
 
-import org.greenrobot.eventbus.EventBus;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +23,7 @@ import java.util.Map;
  */
 public class Helper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "brawlstars.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 3;
     private Context mContext;
 
     /*public static final String CREATE_ITEMS_FROM="create table if not exists "+

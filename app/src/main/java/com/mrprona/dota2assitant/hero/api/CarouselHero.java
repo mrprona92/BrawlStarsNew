@@ -12,6 +12,18 @@ public class CarouselHero extends Hero {
     private int primaryStat;
     private String[] skills;
 
+    @Override
+    public String getTier() {
+        return tier;
+    }
+
+    @Override
+    public void setTier(String tier) {
+        this.tier = tier;
+    }
+
+    private String tier;
+
     public CarouselHero() {
     }
 
@@ -19,6 +31,7 @@ public class CarouselHero extends Hero {
         setId(hero.getId());
         setName(hero.getName());
         setLocalizedName(hero.getLocalizedName());
+        setTier(hero.getTier());
     }
 
     public void setName(String name) {

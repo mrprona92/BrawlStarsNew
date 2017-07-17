@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.mrprona.dota2assitant.R;
 import com.mrprona.dota2assitant.base.util.SteamUtils;
-import com.mrprona.dota2assitant.hero.api.Hero;
 import com.bumptech.glide.Glide;
+import com.mrprona.dota2assitant.hero.api.Hero;
 
 import java.util.ArrayList;
 import java.util.List;

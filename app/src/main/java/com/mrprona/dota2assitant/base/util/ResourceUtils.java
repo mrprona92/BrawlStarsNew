@@ -128,25 +128,13 @@ public class ResourceUtils {
             case 0:
                 return null;
             case 1:
-                return "Carry";
+                return "Common";
             case 2:
-                return "Disabler";
+                return "Rare";
             case 3:
-                return "Durable";
+                return "Epic";
             case 4:
-                return "Escape";
-            case 5:
-                return "Initiator";
-            case 6:
-                return "Jungler";
-            case 7:
-                return "Lane Support";
-            case 8:
-                return "Nuker";
-            case 9:
-                return "Pusher";
-            case 10:
-                return "Support";
+                return "Legendary";
         }
     }
 

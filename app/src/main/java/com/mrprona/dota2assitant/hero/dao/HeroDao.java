@@ -7,7 +7,6 @@ import android.text.TextUtils;
 
 import com.mrprona.dota2assitant.base.dao.GeneralDaoImpl;
 import com.mrprona.dota2assitant.hero.api.Hero;
-import com.mrprona.dota2assitant.hero.api.TalentTree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +23,8 @@ public class HeroDao extends GeneralDaoImpl<Hero> {
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_LOCALIZED_NAME = "localized_name";
 
-    public static final String COLUMN_ITEM_ID = "item_id";
+    public static final String COLUMN_TIER = "tier";
 
-
-
-    public static final String COLUMN_NAME_TALENT = "hero_name";
-    public static final String TABLE_TALENT_NAME = "talent_tree";
     /*
     * 0- id
     * 1- name
@@ -41,30 +36,17 @@ public class HeroDao extends GeneralDaoImpl<Hero> {
     * 7- 20right
     * 8- 15right
     * 9- 10right
-
     * */
-    public static final String COLUMN_TALENT_TREE_NAME = "hero_name";
-    public static final String COLUMN_25LEFT = "col25left";
-    public static final String COLUMN_20LEFT = "col20left";
-    public static final String COLUMN_15LEFT = "col15left";
-    public static final String COLUMN_10LEFT = "col10left";
-    public static final String COLUMN_25RIGHT = "col25right";
-    public static final String COLUMN_20RIGHT = "col20right";
-    public static final String COLUMN_15RIGHT = "col15right";
-    public static final String COLUMN_10RIGHT = "col10right";
-
-
-
-
-
     private static final String CREATE_TABLE_QUERY = "( "
             + COLUMN_ID + " integer primary key, "
             + COLUMN_NAME + " text default null,"
-            + COLUMN_LOCALIZED_NAME + " text default null);";
+            + COLUMN_LOCALIZED_NAME + " text default null,"
+            + COLUMN_TIER + " text default null);";
     private static final String[] ALL_COLUMNS = {
             COLUMN_ID,
             COLUMN_NAME,
-            COLUMN_LOCALIZED_NAME
+            COLUMN_LOCALIZED_NAME,
+            COLUMN_TIER
     };
 
     @Override
@@ -91,6 +73,8 @@ public class HeroDao extends GeneralDaoImpl<Hero> {
         entity.setName(cursor.getString(i));
         i++;
         entity.setLocalizedName(cursor.getString(i));
+        i++;
+        entity.setTier(cursor.getString(i));
         return entity;
     }
 
@@ -107,6 +91,11 @@ public class HeroDao extends GeneralDaoImpl<Hero> {
         } else {
             values.putNull(COLUMN_LOCALIZED_NAME);
         }
+        if (!TextUtils.isEmpty(entity.getTier())) {
+            values.put(COLUMN_TIER, entity.getTier());
+        } else {
+            values.putNull(COLUMN_TIER);
+        }
         return values;
     }
 
@@ -120,6 +109,7 @@ public class HeroDao extends GeneralDaoImpl<Hero> {
         database.execSQL("drop table if exists " + getTableName());
         onCreate(database);
     }
+
 
     public Hero getExactEntity(SQLiteDatabase database, String name) {
         if (TextUtils.isEmpty(name)) {
@@ -156,26 +146,5 @@ public class HeroDao extends GeneralDaoImpl<Hero> {
         } finally {
             cursor.close();
         }
-    }
-
-    public static void bindItems(SQLiteDatabase database, TalentTree talentTree) {
-        unbindTalentTree(database, talentTree);
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, talentTree.getId());
-        values.put(COLUMN_NAME_TALENT, talentTree.getName());
-        values.put(COLUMN_25LEFT, talentTree.getLv25Left());
-        values.put(COLUMN_20LEFT, talentTree.getLv20Left());
-        values.put(COLUMN_15LEFT, talentTree.getLv15Left());
-        values.put(COLUMN_10LEFT, talentTree.getLv10Left());
-        values.put(COLUMN_25RIGHT, talentTree.getLv25Right());
-        values.put(COLUMN_20RIGHT, talentTree.getLv20Right());
-        values.put(COLUMN_15RIGHT, talentTree.getLv15Right());
-        values.put(COLUMN_10RIGHT, talentTree.getLv10Right());
-        database.insert(TABLE_TALENT_NAME, null, values);
-
-    }
-
-    public static void unbindTalentTree(SQLiteDatabase database, TalentTree talentTree) {
-        database.delete(TABLE_TALENT_NAME, COLUMN_ID + "=?", new String[]{String.valueOf(talentTree.getId())});
     }
 }

@@ -2,7 +2,6 @@
 <resources>
     <color name="enemy_team">@color/red</color>
     <color name="ally_team">@color/green</color>
-    <color name="colorPrimary">#1d68bf</color>
 
     <!-- COMMON -->
     <color name="cmn_black">#000</color>
@@ -25,7 +24,6 @@
     <color name="cmn_red_text_view">#b23222</color>
     <color name="cmn_blue_text_view">#1665c1</color>
     <color name="cmn_background">#f1f2f2</color>
-    <color name="cmn_background_divider">#DDD</color>
 
     <!-- MENU -->
 
@@ -34,7 +32,7 @@
 
     <!--TABBAR-->
     <color name="tabbar_normal">#e6e6e6</color>
-    <color name="tabbar_active">#FFD14337</color>
+    <color name="tabbar_active">#004596</color>
 
     <!-- RANKING -->
     <color name="ranking_row_bgr_tag_recommend">#000000</color>
@@ -69,5 +67,17 @@
     <!-- MEMBER CHANGE -->
 
     <!-- CONTEST HISTORY -->
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#5CC044</color>
+
+    <color name="colorHeroBackground1">#5CC044</color>
+    <color name="colorHeroBackground2">#186F3A</color>
+    <color name="colorHeroBackground3">#13532B</color>
+    <color name="colorHeroBackground4">#0F4323</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="cmn_background_divider">#DDD</color>
 
 </resources>

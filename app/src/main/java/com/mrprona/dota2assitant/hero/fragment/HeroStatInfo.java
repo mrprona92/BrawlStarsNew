@@ -3,7 +3,6 @@ package com.mrprona.dota2assitant.hero.fragment;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
@@ -17,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.mrprona.dota2assitant.R;
@@ -28,20 +28,16 @@ import com.mrprona.dota2assitant.hero.api.Hero;
 import com.mrprona.dota2assitant.hero.api.HeroStats;
 import com.mrprona.dota2assitant.hero.api.TalentTree;
 import com.mrprona.dota2assitant.hero.task.MediaPlayerForRandomHeroResponseRequest;
-import com.bumptech.glide.Glide;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.MessageFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import pl.droidsonroids.gif.GifDrawable;
-import pl.droidsonroids.gif.GifImageView;
 
 /**
  * User: ABadretdinov
@@ -51,9 +47,8 @@ import pl.droidsonroids.gif.GifImageView;
 public class HeroStatInfo extends Fragment implements RequestListener<MediaPlayer>, View.OnClickListener {
     private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
     private Hero mHero;
-    private GifImageView mImageView;
+    private ImageView mImageView;
     private MediaPlayer mMediaPlayer;
-    private static TalentTree mTalentTree;
 
 
     @BindView(R.id.txt25Left)
@@ -81,14 +76,9 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
     TextView txt10Right;
 
 
-
-
-
-
-    public static HeroStatInfo newInstance(Hero hero, TalentTree talentTree) {
+    public static HeroStatInfo newInstance(Hero hero) {
         HeroStatInfo fragment = new HeroStatInfo();
         fragment.mHero = hero;
-        mTalentTree= talentTree;
         return fragment;
     }
 
@@ -119,11 +109,6 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
 
     @Override
     public void onDestroy() {
-        Drawable drawable = mImageView.getDrawable();
-        if (drawable instanceof GifDrawable) {
-            ((GifDrawable) drawable).recycle();
-            mImageView.setImageDrawable(null);
-        }
         if (mSpiceManager.isStarted()) {
             mSpiceManager.shouldStop();
         }
@@ -136,7 +121,7 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.hero_stats, container, false);
+        View v = inflater.inflate(R.layout.hero_infomation, container, false);
 
         mAdView = (AdView) v.findViewById(R.id.ad_view);
         // Create an ad request. Check your logcat output for the hashed device ID to
@@ -150,7 +135,7 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
         mAdView.loadAd(adRequest);
 
 
-        ButterKnife.bind(this,v);
+        ButterKnife.bind(this, v);
         return v;
     }
 
@@ -168,7 +153,7 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
         Context context = getActivity();
         View root = getView();
         if (root != null) {
-            mImageView = (GifImageView) root.findViewById(R.id.imgHero);
+            mImageView = (ImageView) root.findViewById(R.id.imgHero);
             mImageView.setOnClickListener(this);
             File externalFilesDir;
             String dir;
@@ -182,12 +167,7 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
             dir += File.separator + "anim" + File.separator;
             File gifFile = new File(dir + mHero.getDotaId() + File.separator, "anim.gif");
             if (gifFile.exists()) {
-                try {
-                    GifDrawable gifFromFile = new GifDrawable(gifFile);
-                    mImageView.setImageDrawable(gifFromFile);
-                    ((ImageView) root.findViewById(R.id.imgPortraitOverlay)).setImageResource(R.drawable.herogif_overlay);
-                } catch (IOException ignored) {
-                }
+                ((ImageView) root.findViewById(R.id.imgPortraitOverlay)).setImageResource(R.drawable.herogif_overlay);
             } else {
                 ((ImageView) root.findViewById(R.id.imgPortraitOverlay)).setImageResource(R.drawable.heroprimaryportrait_overlay);
                 Glide.with(context).load(SteamUtils.getHeroPortraitImage(mHero.getDotaId())).into(mImageView);
@@ -197,7 +177,7 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
 
     @SuppressWarnings("deprecation")
     private void showHeroInfo() {
-        HeroStats stats = mHero.getStats();
+        HeroStats stats = new HeroStats();
         View root = getView();
         if (root != null) {
             //((TextView)fragmentView.findViewById(R.id.title)).setText(mHero.getLocalizedName());
@@ -257,7 +237,7 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
                     .setText(String.valueOf(Math.round(13 * ((float) stats.getBaseInt() + 2f + 15 * stats.getIntGain()))));
             ((TextView) root.findViewById(R.id.mana25)).setText(
                     String.valueOf(Math.round(13 * ((float) stats.getBaseInt() + 2f * 10 + 24 * stats.getIntGain()))));
-		/*Damage*/
+        /*Damage*/
             //base attribute gives +1 to damage
             ((TextView) root.findViewById(R.id.damage1)).setText(stats.getMinDmg() + "-" + stats.getMaxDmg());
             ((TextView) root.findViewById(R.id.damage16)).setText(
@@ -312,17 +292,7 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
             ((TextView) root.findViewById(R.id.txtLore)).setText(Html.fromHtml(FileUtils.getTextFromAsset(getActivity(), path)));
             //http://www.playdota.com/mechanics/damagearmor
 
-            if(mTalentTree!=null){
-                txt25Left.setText(mTalentTree.getLv25Left()+"");
-                txt20Left.setText(mTalentTree.getLv20Left()+"");
-                txt15Left.setText(mTalentTree.getLv15Left()+"");
-                txt10Left.setText(mTalentTree.getLv10Left()+"");
 
-                txt25Right.setText(mTalentTree.getLv25Right()+"");
-                txt20Right.setText(mTalentTree.getLv20Right()+"");
-                txt15Right.setText(mTalentTree.getLv15Right()+"");
-                txt10Right.setText(mTalentTree.getLv10Right()+"");
-            }
 
         }
     }
@@ -330,7 +300,7 @@ public class HeroStatInfo extends Fragment implements RequestListener<MediaPlaye
     private void addHeroRoles(View root) {
         LinearLayout rolesHolder = (LinearLayout) root.findViewById(R.id.roles_holder);
         rolesHolder.removeAllViews();
-        HeroStats heroStat = mHero.getStats();
+        HeroStats heroStat =new HeroStats();
         if (heroStat.getRoles() != null) {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);

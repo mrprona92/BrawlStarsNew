@@ -1,13 +1,11 @@
 package com.mrprona.dota2assitant.hero.activity;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -18,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.chartboost.sdk.Chartboost;
-import com.chartboost.sdk.Libraries.CBLogging;
 import com.mrprona.dota2assitant.BeanContainer;
 import com.mrprona.dota2assitant.R;
 import com.mrprona.dota2assitant.base.activity.BaseActivity;
@@ -35,7 +32,6 @@ import com.mrprona.dota2assitant.hero.service.HeroService;
  */
 public class HeroInfoActivity extends BaseActivity {
     private Hero hero;
-    private TalentTree talentTree;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,7 +62,6 @@ public class HeroInfoActivity extends BaseActivity {
         if (intent != null && intent.containsKey("id")) {
             HeroService heroService = BeanContainer.getInstance().getHeroService();
             hero = heroService.getHeroWithStatsById(this, intent.getLong("id"));
-            talentTree= heroService.getTalentTreeByID(this, (int)intent.getLong("id"));
 
             final TypedArray styledAttributes = getTheme()
                     .obtainStyledAttributes(new int[]{R.attr.actionBarSize});
@@ -80,7 +75,7 @@ public class HeroInfoActivity extends BaseActivity {
             }
             getSupportActionBar().setTitle(hero.getLocalizedName());
 
-            FragmentStatePagerAdapter adapter = new HeroPagerAdapter(getSupportFragmentManager(), this, hero, talentTree);
+            FragmentStatePagerAdapter adapter = new HeroPagerAdapter(getSupportFragmentManager(), this, hero);
 
             final ViewPager pager = (ViewPager) findViewById(R.id.pager);
             pager.setAdapter(adapter);
@@ -89,7 +84,6 @@ public class HeroInfoActivity extends BaseActivity {
             tabLayout.setupWithViewPager(pager);
         }
     }
-
 
 
     public static class OnDotaHeroClickListener implements View.OnClickListener {
@@ -107,7 +101,6 @@ public class HeroInfoActivity extends BaseActivity {
             context.startActivity(intent);
         }
     }
-
 
 
     @Override

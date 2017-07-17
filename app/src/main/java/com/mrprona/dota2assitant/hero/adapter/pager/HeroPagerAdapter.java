@@ -5,8 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.chartboost.sdk.CBLocation;
-import com.chartboost.sdk.Chartboost;
 import com.mrprona.dota2assitant.R;
 import com.mrprona.dota2assitant.hero.api.Hero;
 import com.mrprona.dota2assitant.hero.api.TalentTree;
@@ -23,20 +21,18 @@ import com.mrprona.dota2assitant.hero.fragment.HeroStatInfo;
 public class HeroPagerAdapter extends FragmentStatePagerAdapter {
     private Context context;
     private Hero hero;
-    private TalentTree talentTree;
 
-    public HeroPagerAdapter(FragmentManager fragmentManager, Context context, Hero hero,TalentTree mTalentTree) {
+    public HeroPagerAdapter(FragmentManager fragmentManager, Context context, Hero hero) {
         super(fragmentManager);
         this.hero = hero;
         this.context = context;
-        this.talentTree= mTalentTree;
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return HeroStatInfo.newInstance(hero,talentTree);
+                return HeroStatInfo.newInstance(hero);
             case 1:
                 return HeroSkills.newInstance(hero);
             case 2:

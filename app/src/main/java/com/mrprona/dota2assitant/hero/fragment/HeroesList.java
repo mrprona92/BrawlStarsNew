@@ -1,9 +1,7 @@
 package com.mrprona.dota2assitant.hero.fragment;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -23,7 +21,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -52,14 +49,10 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
-import pl.droidsonroids.gif.GifDrawable;
-import pl.droidsonroids.gif.GifImageView;
 
 /**
  * User: ABadretdinov
@@ -391,17 +384,9 @@ public class HeroesList extends SCBaseFragment implements SearchableFragment, Re
             final CarouselHero hero = getItem(position);
 
             File gifFile = new File(dir + hero.getDotaId() + File.separator, "anim.gif");
-            GifImageView imageView = (GifImageView) view.findViewById(R.id.gifHero);
-            if (gifFile.exists()) {
-                try {
-                    GifDrawable gifFromFile = new GifDrawable(gifFile);
-                    imageView.setImageDrawable(gifFromFile);
-                } catch (IOException e) {
-                    //ignored
-                }
-            } else {
+            ImageView imageView = (ImageView) view.findViewById(R.id.gifHero);
+
                 Glide.with(context).load(SteamUtils.getHeroPortraitImage(hero.getDotaId())).into(imageView);
-            }
 
 
             String[] skills = hero.getSkills();
@@ -445,11 +430,6 @@ public class HeroesList extends SCBaseFragment implements SearchableFragment, Re
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            GifImageView gifView = (GifImageView) ((View) object).findViewById(R.id.gifHero);
-            if (gifView.getDrawable() instanceof GifDrawable) {
-                ((GifDrawable) gifView.getDrawable()).recycle();
-            }
-            gifView.setImageDrawable(null);
             container.removeView((View) object);
         }
 

@@ -63,17 +63,11 @@
         <item>Weapons</item>
     </string-array>
     <string-array name="hero_roles">
-        <item>All</item>
-        <item>Carry</item>
-        <item>Disabler</item>
-        <item>Durable</item>
-        <item>Escape</item>
-        <item>Initiator</item>
-        <item>Jungler</item>
-        <item>Lane Support</item>
-        <item>Nuker</item>
-        <item>Pusher</item>
-        <item>Support</item>
+        <item>NoFilter</item>
+        <item>Common</item>
+        <item>Rare</item>
+        <item>Epic</item>
+        <item>Legendary</item>
     </string-array>
     <string-array name="match_history_title">
         <item>SEARCH</item>

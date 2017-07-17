@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dota2 Assistant</string>
     <string name="language">english</string>
 
     <string name="banner_ad_unit_id">ca-app-pub-1818774973864163/5531434737</string>
@@ -229,7 +228,6 @@
     <string name="part_of_set">Part of set/bundle:</string>
     <string name="press_refresh_button">Press \'Refresh\' button</string>
     <string name="network_unavailable">Network is unavailable</string>
-    <string name="watch_on_youtube">Watch on YouTube</string>
     <string name="view_original">View original</string>
     <string name="author">Author:</string>
     <string name="date">Date:</string>
@@ -332,38 +330,47 @@
 
     <string name="ask_quit">Do you want quit application?</string>
 
-    <string name="quiz_high_score_item">Items</string>
-    <string name="quiz_high_score_abilities">Abilities</string>
-    <string name="quiz_high_score_random">Random</string>
-
-
-    //Title for high score row
-    <string name="quiz_high_score_title_ranking">Ranking</string>
-    <string name="quiz_high_score_title_name">Name</string>
-    <string name="quiz_high_score_title_flag">Flag</string>
-    <string name="quiz_high_score_title_nation_name">Nation</string>
-    <string name="quiz_high_score_title_score">Score</string>
-    <string name="quiz_high_score_title_date">Date</string>
-    <string name="quiz_high_score">High score records</string>
-    <string name="team_ranking">TEAM RANKINGS</string>
-    <string name="ranking_title">RANKINGS</string>
-    <string name="quiz_ranking_change_status">Status</string>
-
-
-
-    <string name="quiz_high_score_endgame">GAME OVER!</string>
-    <string name="quiz_high_score_notice_score">You\'ve reached %s points in game!</string>
-    <string name="quiz_high_score_submit">SUBMIT SCORE</string>
-    <string name="quiz_high_score_dialog_title_name">NAME : </string>
-    <string name="quiz_high_score_dialog_title_country">COUNTRY: </string>
-    <string name="quiz_high_score_dialog_title_score">Your score: %s </string>
-    <string name="quiz_end_game_title">GAME OVER</string>
-    <string name="quiz_high_score_choose_title_country">Click to choose country...</string>
-    <string name="quiz_high_score_notice_share">I\'ve reached %s points in quiz game dota2 assitant!</string>
 
 
     <string name="facebook_app_id">622236094645140</string>
     <string name="appIDChartboost">5885a19e04b0163490486ca9</string>
     <string name="appSignature">a7abfb73b301cc66f3632702e373fc954d9cc495</string>
+
+
+    <string name="app_name">BrawlStarDemo</string>
+
+    <string name="str_easyofuse">Easy Of Use</string>
+    <string name="str_range">Range</string>
+    <string name="str_accuracy">Accuracy</string>
+    <string name="str_power">Power</string>
+    <string name="str_mobility">Mobility</string>
+    <string name="str_stamina">Stamina</string>
+    <string name="str_utility">Utility</string>
+    <string name="str_crowd_control">Crowd Control</string>
+
+
+    <string name="str_name_star1">SMASH-GRAB</string>
+    <string name="str_name_star2">SHOWDOWN</string>
+    <string name="str_name_star3">HEIST</string>
+    <string name="str_name_star4">BOUNTY</string>
+
+    <string name="str_role_name1">TYPE</string>
+    <string name="str_role_name2">ROLE</string>
+    <string name="str_role_name3">SPEED</string>
+    <string name="str_role_name4">HITPOINTS</string>
+    <string name="str_role_name5">TIER</string>
+
+    <string name="watch_on_youtube">Watch on YouTube</string>
+
+
+
+    <string name="ability_lblSkillType">Skill Type Attack</string>
+    <string name="ability_lblRange">Range</string>
+    <string name="ability_lblRecharge">Recharge Time</string>
+    <string name="ability_lblDame">Damage</string>
+    <string name="ability_lblAttackDelay">Attack Delay</string>
+
+
+
 
 </resources>

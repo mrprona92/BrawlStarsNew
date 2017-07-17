@@ -3,7 +3,6 @@ package com.mrprona.dota2assitant.base.task;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.mrprona.dota2assitant.BeanContainer;
 import com.mrprona.dota2assitant.base.dao.DatabaseManager;
@@ -33,16 +32,7 @@ public class UpdateLoadRequest extends TaskRequest<String> {
 
     @Override
     public String loadData() throws Exception {
-        DatabaseManager manager= DatabaseManager.getInstance(mContext);
-
-        SQLiteDatabase db= manager.openDatabase();
-
-        List<TalentTree> mListTalentTreee= JsonSimpleExample.ConvertJsonFile(mContext);
-        for (TalentTree mTalentTree: mListTalentTreee) {
-            HeroDao.bindItems(db, mTalentTree);
-        }
-
-        manager.closeDatabase();
+        DatabaseManager manager = DatabaseManager.getInstance(mContext);
 
         LocalUpdateService localUpdateService = BeanContainer.getInstance().getLocalUpdateService();
         AssetManager assetManager = mContext.getAssets();

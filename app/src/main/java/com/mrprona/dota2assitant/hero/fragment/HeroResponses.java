@@ -11,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,6 @@ import android.widget.Toast;
 
 import com.chartboost.sdk.CBLocation;
 import com.chartboost.sdk.Chartboost;
-import com.chartboost.sdk.Libraries.CBLogging;
 import com.mrprona.dota2assitant.R;
 import com.mrprona.dota2assitant.base.service.LocalSpiceService;
 import com.mrprona.dota2assitant.hero.activity.HeroInfoActivity;

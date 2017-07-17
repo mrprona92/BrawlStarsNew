@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import roboguice.util.temp.Strings;
+
 /**
  * Created by ABadretdinov
  * 25.12.2014
@@ -39,7 +41,7 @@ public class HeroServiceImpl implements HeroService {
         heroDao = beanContainer.getHeroDao();
         heroStatsDao = beanContainer.getHeroStatsDao();
         abilityDao = beanContainer.getAbilityDao();
-        talentDao= beanContainer.getTalentDao();
+        talentDao = beanContainer.getTalentDao();
     }
 
     @Override
@@ -58,7 +60,7 @@ public class HeroServiceImpl implements HeroService {
         DatabaseManager manager = DatabaseManager.getInstance(context);
         SQLiteDatabase database = manager.openDatabase();
         try {
-            return talentDao.getShortTalentsTree(database,id);
+            return talentDao.getShortTalentsTree(database, id);
         } finally {
             manager.closeDatabase();
         }
@@ -74,14 +76,10 @@ public class HeroServiceImpl implements HeroService {
             if (!StringUtils.isEmpty(filter)) {
                 while (iterator.hasNext()) {
                     Hero hero = iterator.next();
-                    HeroStats heroStats = heroStatsDao.getShortHeroStats(database, hero.getId());
-                    if (heroStats.getRoles() != null) {
+                    if (hero.getTier() != null) {
                         boolean found = false;
-                        for (int i = 0, size = heroStats.getRoles().length; !found && i < size; i++) {
-                            String role = heroStats.getRoles()[i];
-                            if (role.equals(filter)) {
-                                found = true;
-                            }
+                        if (hero.getTier().equalsIgnoreCase(filter)) {
+                            found = true;
                         }
                         if (!found) {
                             iterator.remove();
@@ -124,38 +122,16 @@ public class HeroServiceImpl implements HeroService {
         DatabaseManager manager = DatabaseManager.getInstance(context);
         SQLiteDatabase database = manager.openDatabase();
         try {
-            List<CarouselHero> carouselHeroes = new ArrayList<CarouselHero>();
+            List<CarouselHero> carouselHeroes = new ArrayList<>();
             List<Hero> heroes = heroDao.getAllEntities(database);
             for (Hero hero : heroes) {
                 CarouselHero carouselHero = new CarouselHero(hero);
-                HeroStats heroStats = heroStatsDao.getShortHeroStats(database, hero.getId());
-                if (heroStats != null) {
-                    carouselHero.setPrimaryStat(heroStats.getPrimaryStat());
-                    if (TextUtils.isEmpty(filter)) {
-                        carouselHero.setSkills(getStringAbilities(context, carouselHero.getId()));
-                    }
-                    if (heroStats.getRoles() != null) {
-                        boolean found = filter == null;
-                        for (int i = 0, size = heroStats.getRoles().length; !found && i < size; i++) {
-                            String role = heroStats.getRoles()[i];
-                            if (role.equals(filter)) {
-                                found = true;
-                            }
-                        }
-                        if (found) {
-                            List<String> stringAbilities = getStringAbilitiesByHero(context, hero.getId());
-                            if (stringAbilities != null && stringAbilities.size() > 0) {
-                                carouselHero.setSkills(stringAbilities.toArray(new String[stringAbilities.size()]));
-                            }
-                            carouselHeroes.add(carouselHero);
-                        }
-                    } else if (filter == null) {
-                        List<String> stringAbilities = getStringAbilitiesByHero(context, hero.getId());
-                        if (stringAbilities != null && stringAbilities.size() > 0) {
-                            carouselHero.setSkills(stringAbilities.toArray(new String[stringAbilities.size()]));
-                        }
+                if (!Strings.isEmpty(hero)) {
+                    if (hero.getTier().equalsIgnoreCase(filter)) {
                         carouselHeroes.add(carouselHero);
                     }
+                } else {
+                    carouselHeroes.add(carouselHero);
                 }
             }
             return carouselHeroes;
@@ -245,7 +221,6 @@ public class HeroServiceImpl implements HeroService {
         try {
             Hero hero = heroDao.getById(database, id);
             if (hero != null) {
-                hero.setStats(heroStatsDao.getById(database, id));
             }
             return hero;
         } finally {
@@ -343,7 +318,6 @@ public class HeroServiceImpl implements HeroService {
         for (TalentTree talentTree : talentTrees) {
             SQLiteDatabase database = manager.openDatabase();
             try {
-                heroDao.bindItems(database, talentTree);
             } finally {
                 manager.closeDatabase();
             }

@@ -1,11 +1,12 @@
 package com.mrprona.dota2assitant.hero.api;
 
-import com.mrprona.dota2assitant.base.entity.HasId;
 import com.google.gson.annotations.SerializedName;
+import com.mrprona.dota2assitant.base.entity.HasId;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+
 
 /**
  * User: ABadretdinov
@@ -21,7 +22,15 @@ public class Hero implements HasId, Comparable, Serializable {
     @SerializedName("localized_name")
     private String localizedName;
 
-    private HeroStats stats;
+    private String tier;
+
+    public String getTier() {
+        return tier;
+    }
+
+    public void setTier(String tier) {
+        this.tier = tier;
+    }
 
     public String getName() {
         return name;
@@ -51,14 +60,6 @@ public class Hero implements HasId, Comparable, Serializable {
 
     public String getDotaId() {
         return name.split("npc_brawl_hero_")[1];
-    }
-
-    public HeroStats getStats() {
-        return stats;
-    }
-
-    public void setStats(HeroStats stats) {
-        this.stats = stats;
     }
 
     @Override
