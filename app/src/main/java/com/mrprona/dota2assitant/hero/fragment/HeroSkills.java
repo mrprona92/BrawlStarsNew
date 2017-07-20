@@ -10,6 +10,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,7 +36,7 @@ import java.util.List;
 public class HeroSkills extends SCBaseFragment {
     private SpiceManager mSpiceManager = new SpiceManager(LocalSpiceService.class);
 
-    private Hero mHero;
+    private List<String> mListUpgrade;
 
     private HeroInfo mHeroInfo;
 
@@ -47,9 +48,9 @@ public class HeroSkills extends SCBaseFragment {
     private RecyclerView mRecycleView;
 
 
+
     public static HeroSkills newInstance(Hero hero, HeroInfo mHeroInfo) {
         HeroSkills fragment = new HeroSkills();
-        fragment.mHero = hero;
         fragment.mHeroInfo = mHeroInfo;
         return fragment;
     }
@@ -76,6 +77,7 @@ public class HeroSkills extends SCBaseFragment {
         mRecycleView.setItemAnimator(new DefaultItemAnimator());
         mRecycleView.setAdapter(mSkillAdapter);
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+
     }
 
     @Override
@@ -95,6 +97,8 @@ public class HeroSkills extends SCBaseFragment {
         mListDefaultAbility.add(mHeroInfo.getmDefaultAbility());
         mListDefaultAbility.add(ability1);
         mSkillAdapter.setListAdapter(mListDefaultAbility);
+        mListUpgrade = mHeroInfo.getPriority();
+        addHeroRoles(mListUpgrade);
     }
 
     @Override
@@ -134,53 +138,32 @@ public class HeroSkills extends SCBaseFragment {
     }
 
 
-    public RecyclerView.LayoutManager getLayoutManager(Context context) {
-        LinearLayoutManager manager = new LinearLayoutManager(context);
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        return manager;
-    }
-
-
-
-    private void addHeroRoles(View root, Role5Info role5Info) {
-        LinearLayout rolesHolder = (LinearLayout) root.findViewById(R.id.roles_holder);
+    private void addHeroRoles(List<String> listUpgrade) {
+        LinearLayout rolesHolder = (LinearLayout) findViewById(R.id.roles_holder);
         rolesHolder.removeAllViews();
-
-        if (role5Info.getType() != null) {
-            rolesHolder.addView(initRoleUI(role5Info.getType()));
-        }
-        if (role5Info.getRole() != null) {
-            rolesHolder.addView(initRoleUI(role5Info.getRole()));
+        for (String mString : listUpgrade) {
+            rolesHolder.addView(initRoleUI(mString));
         }
 
-        if (role5Info.getSpeed() != null) {
-            rolesHolder.addView(initRoleUI(role5Info.getSpeed()));
-        }
-
-        if (role5Info.getHitpoints() != null) {
-            rolesHolder.addView(initRoleUI(role5Info.getHitpoints()));
-        }
-
-        if (role5Info.getTier() != null) {
-            rolesHolder.addView(initRoleUI(role5Info.getTier()));
-        }
     }
 
     private View initRoleUI(String text) {
-        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, getResources().getDisplayMetrics());
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                height);
+        View child = getLayoutInflater(null).inflate(R.layout.hero_skill_upgrade, null);
+        TextView mTextView = (TextView) child.findViewById(R.id.lblUpgradeName);
+        ImageView mImageView = (ImageView) child.findViewById(R.id.imgSKillUpgrade);
+        mTextView.setText(text);
 
-        TextView textView = new TextView(getActivity());
-        textView.setLayoutParams(layoutParams);
-        textView.setText(text);
-        textView.setTextColor(getResources().getColor(R.color.cmn_black));
-        textView.setSingleLine(true);
-        textView.setGravity(Gravity.CENTER_VERTICAL);
-        textView.setCompoundDrawablePadding(Utils.dpSize(getActivity(), 5));
-        return textView;
+        String skill = text.substring(3, text.length());
+        if (skill.equalsIgnoreCase("health")) {
+            mImageView.setImageDrawable(mAppContext.getResources().getDrawable(R.drawable.ic_upgrade_health));
+        } else if (skill.equalsIgnoreCase("super")) {
+            mImageView.setImageDrawable(mAppContext.getResources().getDrawable(R.drawable.ic_upgrade_super));
+        } else if (skill.equalsIgnoreCase("attack")) {
+            mImageView.setImageDrawable(mAppContext.getResources().getDrawable(R.drawable.ic_upgrade_attack));
+        }
+
+        return child;
     }
-
 
 
 }
