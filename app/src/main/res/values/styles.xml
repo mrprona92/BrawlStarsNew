@@ -109,9 +109,10 @@
 
     <style name="Layout.FillWidthForImage">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_weight">0.3</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:scaleType">fitStart</item>
     </style>
 
     <style name="TextPaddingBottom">
@@ -128,7 +129,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:paddingBottom">3dp</item>
         <item name="android:layout_gravity">center</item>
@@ -164,5 +165,18 @@
     </style>
 
 
+    <style name="llSkillRowAlign">
+        <item name="android:padding">@dimen/padding_normal</item>
+        <item name="rcBackgroundPadding">7dp</item>
+        <item name="rcRadius">10dp</item>
+        <item name="android:background">@drawable/shapeability</item>
+    </style>
+
+    <style name="llSkillRowAlign_divider_common">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0px</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+    </style>
 
 </resources>

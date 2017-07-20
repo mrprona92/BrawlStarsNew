@@ -79,5 +79,6 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="cmn_background_divider">#DDD</color>
+    <color name="app_purple">#423752</color>
 
 </resources>

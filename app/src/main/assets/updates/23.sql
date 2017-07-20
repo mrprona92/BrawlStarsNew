@@ -1,7 +1,7 @@
 INSERT INTO hero(_id,localized_name,name,tier) SELECT '1' as _id,'Jessie' as localized_name,'npc_brawl_hero_jessie' as name,'common' as tier
 UNION ALL SELECT '2','Nita','npc_brawl_hero_nita','common'
 UNION ALL SELECT '3','Dynamike','npc_brawl_hero_dynamike','common'
-UNION ALL SELECT '4','El Primo','npc_brawl_hero_elprimo','common'
+UNION ALL SELECT '4','ElPrimo','npc_brawl_hero_elprimo','common'
 UNION ALL SELECT '5','Mortis','npc_brawl_hero_mortis','epic'
 UNION ALL SELECT '6','Crow','npc_brawl_hero_crow','legendary'
 UNION ALL SELECT '7','Poco','npc_brawl_hero_poco','rare'

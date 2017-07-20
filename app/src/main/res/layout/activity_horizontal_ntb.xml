@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#423752"
+    android:background="@drawable/hero_background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -31,8 +30,8 @@
                 android:layout_centerVertical="true"
                 android:layout_gravity="left"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:visibility="gone"
-                android:src="@mipmap/btn_back" />
+                android:src="@mipmap/btn_back"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/lblToolbarTitle"
@@ -42,12 +41,6 @@
                 android:text="@string/app_name"
                 android:textColor="@color/cmn_white"
                 android:textSize="@dimen/text_title" />
-
-            <Spinner
-                android:id="@+id/nav_spinner"
-                android:layout_width="35dp"
-                android:layout_height="wrap_content" />
-
 
         </android.support.v7.widget.Toolbar>
     </LinearLayout>
@@ -71,20 +64,19 @@
         android:id="@+id/actionMenuView"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
+        android:background="@color/app_purple" />
 
 
     <devlight.io.library.ntb.NavigationTabBar
         android:id="@+id/ntb_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         app:ntb_badge_gravity="top"
         app:ntb_badge_position="right"
-        app:ntb_badged="true"
         app:ntb_scaled="true"
+        app:ntb_swiped="true"
         app:ntb_tinted="true"
         app:ntb_title_mode="all"
-        app:ntb_titled="true"
-        app:ntb_swiped="true"/>
+        app:ntb_titled="true" />
 
 </LinearLayout>

@@ -200,8 +200,6 @@ public class ListHolderActivity extends BaseActivity implements SearchView.OnQue
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_holder);
 
-        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/future.ttf"); // font from assets: "assets/fonts/Roboto-Regular.ttf
-
         //mActionMenuView.setPresenter(new ActionMenuPresenter(this));
 
         FacebookSdk.sdkInitialize(getApplicationContext());

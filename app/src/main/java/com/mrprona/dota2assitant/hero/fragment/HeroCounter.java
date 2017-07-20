@@ -6,23 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.mrprona.dota2assitant.R;
 import com.mrprona.dota2assitant.base.fragment.SCBaseFragment;
 import com.mrprona.dota2assitant.base.service.LocalSpiceService;
-import com.mrprona.dota2assitant.base.util.Utils;
 import com.mrprona.dota2assitant.hero.adapter.SkillAdapter;
 import com.mrprona.dota2assitant.hero.api.Hero;
 import com.octo.android.robospice.SpiceManager;
 import com.util.responses.DefaultAbilityInfo;
 import com.util.responses.HeroInfo;
-import com.util.responses.Role5Info;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +24,7 @@ import java.util.List;
  * Date: 16.01.14
  * Time: 15:57
  */
-public class HeroSkills extends SCBaseFragment {
-    private SpiceManager mSpiceManager = new SpiceManager(LocalSpiceService.class);
+public class HeroCounter extends SCBaseFragment {
 
     private Hero mHero;
 
@@ -47,8 +38,8 @@ public class HeroSkills extends SCBaseFragment {
     private RecyclerView mRecycleView;
 
 
-    public static HeroSkills newInstance(Hero hero, HeroInfo mHeroInfo) {
-        HeroSkills fragment = new HeroSkills();
+    public static HeroCounter newInstance(Hero hero, HeroInfo mHeroInfo) {
+        HeroCounter fragment = new HeroCounter();
         fragment.mHero = hero;
         fragment.mHeroInfo = mHeroInfo;
         return fragment;
@@ -127,9 +118,7 @@ public class HeroSkills extends SCBaseFragment {
 
     @Override
     public void onDestroy() {
-        if (mSpiceManager.isStarted()) {
-            mSpiceManager.shouldStop();
-        }
+
         super.onDestroy();
     }
 
@@ -139,48 +128,4 @@ public class HeroSkills extends SCBaseFragment {
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         return manager;
     }
-
-
-
-    private void addHeroRoles(View root, Role5Info role5Info) {
-        LinearLayout rolesHolder = (LinearLayout) root.findViewById(R.id.roles_holder);
-        rolesHolder.removeAllViews();
-
-        if (role5Info.getType() != null) {
-            rolesHolder.addView(initRoleUI(role5Info.getType()));
-        }
-        if (role5Info.getRole() != null) {
-            rolesHolder.addView(initRoleUI(role5Info.getRole()));
-        }
-
-        if (role5Info.getSpeed() != null) {
-            rolesHolder.addView(initRoleUI(role5Info.getSpeed()));
-        }
-
-        if (role5Info.getHitpoints() != null) {
-            rolesHolder.addView(initRoleUI(role5Info.getHitpoints()));
-        }
-
-        if (role5Info.getTier() != null) {
-            rolesHolder.addView(initRoleUI(role5Info.getTier()));
-        }
-    }
-
-    private View initRoleUI(String text) {
-        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, getResources().getDisplayMetrics());
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                height);
-
-        TextView textView = new TextView(getActivity());
-        textView.setLayoutParams(layoutParams);
-        textView.setText(text);
-        textView.setTextColor(getResources().getColor(R.color.cmn_black));
-        textView.setSingleLine(true);
-        textView.setGravity(Gravity.CENTER_VERTICAL);
-        textView.setCompoundDrawablePadding(Utils.dpSize(getActivity(), 5));
-        return textView;
-    }
-
-
-
 }

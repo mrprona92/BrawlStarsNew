@@ -187,7 +187,7 @@
         <item>POPULAR</item>
         <item>RECENT</item>
         <item>LEAGUES</item>
-        </string-array>
+    </string-array>
 
     <string-array name="rankingtitle">
         <item>TEAM</item>
@@ -240,4 +240,16 @@
         <item>Last Hits</item>
         <item>Denies</item>
     </string-array>
+
+
+    <string-array name="quality_stars">
+        <item></item>
+        <item>POOR</item>
+        <item>FAIR</item>
+        <item>DECENT</item>
+        <item>GOOD</item>
+        <item>GREAT</item>
+        <item>EXCELLENT</item>
+    </string-array>
+
 </resources>

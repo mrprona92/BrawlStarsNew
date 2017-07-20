@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.mrprona.dota2assitant.base.activity.BaseActivity;
 import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
 import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
 
@@ -29,7 +30,7 @@ public abstract class SCBaseFragment extends Fragment {
 
     private Bundle mResultBundle;
 
-    protected HorizontalNtbActivity mActivity;
+    protected BaseActivity mActivity;
     protected boolean mIsViewInitialized = false;
     protected View mView;
     protected Unbinder mUnbinder;
@@ -38,7 +39,7 @@ public abstract class SCBaseFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mActivity = (HorizontalNtbActivity) context;
+        mActivity = (BaseActivity) context;
     }
 
     @Override
@@ -49,7 +50,7 @@ public abstract class SCBaseFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mActivity = (HorizontalNtbActivity) getActivity();
+        mActivity = (BaseActivity) getActivity();
         if (mView == null) {
             mView = inflater.inflate(getViewContent(), container, false);
             mUnbinder = ButterKnife.bind(this, mView);

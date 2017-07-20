@@ -10,6 +10,7 @@ import com.mrprona.dota2assitant.hero.api.Hero;
 import com.mrprona.dota2assitant.hero.fragment.HeroDefaultItemBuild;
 import com.mrprona.dota2assitant.hero.fragment.HeroSkills;
 import com.mrprona.dota2assitant.hero.fragment.HeroStatInfo;
+import com.util.responses.HeroInfo;
 
 /**
  * User: ABadretdinov
@@ -19,29 +20,31 @@ import com.mrprona.dota2assitant.hero.fragment.HeroStatInfo;
 public class HeroPagerAdapter extends FragmentStatePagerAdapter {
     private Context context;
     private Hero hero;
+    private HeroInfo mHeroInfo;
 
-    public HeroPagerAdapter(FragmentManager fragmentManager, Context context, Hero hero) {
+    public HeroPagerAdapter(FragmentManager fragmentManager, Context context, Hero hero, HeroInfo mHeroInfo) {
         super(fragmentManager);
         this.hero = hero;
         this.context = context;
+        this.mHeroInfo = mHeroInfo;
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return HeroStatInfo.newInstance(hero);
+                return HeroStatInfo.newInstance(hero, mHeroInfo);
             case 1:
-                return HeroSkills.newInstance(hero);
+                return HeroSkills.newInstance(hero, mHeroInfo);
             case 2:
-                return HeroDefaultItemBuild.newInstance(hero);
+                return HeroSkills.newInstance(hero, mHeroInfo);
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 4;
+        return 2;
     }
 
     @Override
@@ -52,9 +55,7 @@ public class HeroPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return context.getString(R.string.skills);
             case 2:
-                return context.getString(R.string.default_guide);
-            case 3:
-                return context.getString(R.string.responses);
+                return context.getString(R.string.counter);
             default:
                 return "";
         }

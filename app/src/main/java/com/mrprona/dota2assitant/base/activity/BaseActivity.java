@@ -69,5 +69,90 @@ public  abstract  class BaseActivity extends AppCompatActivity {
         }
     }
 
+    private Dialog mProgressDialog;
+
+    public void showProgressDialog(final String message) {
+        showProgressDialog(message, false);
+    }
+
+    private int sDialogCount = 0;
+
+    /**
+     * Show progress dialog.
+     *
+     * @param message
+     * @param cancelable
+     */
+
+    public void showProgressDialog(final String message, final boolean cancelable) {
+        try {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Dialog dlg = getProgressDialog();
+                        sDialogCount++;
+                        if (!dlg.isShowing()) {
+                            dlg.setCancelable(cancelable);
+                            dlg.show();
+                        }
+                    } catch (Exception ex) {
+                        // Do nothing
+                    }
+                }
+            });
+        } catch (Exception e) {
+        }
+    }
+
+
+    /**
+     * Hide progress dialog.
+     */
+    public void hideProgressDialog() {
+        hideProgressDialog(true);
+    }
+
+    public void hideProgressDialog(final boolean isWait) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Dialog dlg = getProgressDialog();
+                    sDialogCount--;
+                    if (dlg != null && dlg.isShowing()) {
+                        if (!isWait) {
+                            sDialogCount = 0;
+                            dlg.dismiss();
+                        } else {
+                            if (sDialogCount <= 0) dlg.dismiss();
+                        }
+                    }
+                } catch (Exception ex) {
+                    // Do nothing
+                }
+            }
+        });
+    }
+
+
+
+    /**
+     * Returns the shared progress dialog.
+     *
+     * @author Binh.TH
+     */
+    @SuppressLint("InflateParams")
+    private Dialog getProgressDialog() {
+        if (mProgressDialog == null) {         // Create if null
+            mProgressDialog = new Dialog(this, android.R.style.Theme_Black);
+            View view = LayoutInflater.from(this).inflate(R.layout.cmn_process, null);
+            mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            mProgressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+            mProgressDialog.setContentView(view);
+        }
+        return mProgressDialog;
+    }
+
 
 }

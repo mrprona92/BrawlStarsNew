@@ -13,7 +13,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.TextView;
 
 import com.chartboost.sdk.Chartboost;
 import com.mrprona.dota2assitant.BeanContainer;
@@ -22,21 +22,49 @@ import com.mrprona.dota2assitant.base.activity.BaseActivity;
 import com.mrprona.dota2assitant.base.util.FileUtils;
 import com.mrprona.dota2assitant.hero.adapter.pager.HeroPagerAdapter;
 import com.mrprona.dota2assitant.hero.api.Hero;
-import com.mrprona.dota2assitant.hero.api.TalentTree;
 import com.mrprona.dota2assitant.hero.service.HeroService;
+import com.mrprona.dota2assitant.hero.task.HeroInfoLoadRequest;
+import com.octo.android.robospice.SpiceManager;
+import com.octo.android.robospice.UncachedSpiceService;
+import com.octo.android.robospice.persistence.exception.SpiceException;
+import com.octo.android.robospice.request.listener.RequestListener;
+import com.util.responses.HeroInfo;
 
 /**
  * User: ABadretdinov
  * Date: 02.09.13
  * Time: 13:24
  */
-public class HeroInfoActivity extends BaseActivity {
+public class HeroInfoActivity extends BaseActivity implements RequestListener<HeroInfo> {
     private Hero hero;
+    private HeroInfo mHeroInfo;
+    private SpiceManager mSpiceManager = new SpiceManager(UncachedSpiceService.class);
+
+
+    @Override
+    public void onStart() {
+        if (!mSpiceManager.isStarted()) {
+            mSpiceManager.start(this);
+            loadHeroInfoData(this);
+        }
+        super.onStart();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        if (mSpiceManager.isStarted()) {
+            mSpiceManager.shouldStop();
+        }
+        Chartboost.onDestroy(this);
+        super.onDestroy();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuItem guides = menu.add(1, 1001, 1, R.string.guides);
-        MenuItemCompat.setShowAsAction(guides, MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);
+    /*    MenuItem guides = menu.add(1, 1001, 1, R.string.guides);
+        MenuItemCompat.setShowAsAction(guides, MenuItemCompat.SHOW_AS_ACTION_ALWAYS | MenuItemCompat.SHOW_AS_ACTION_WITH_TEXT);*/
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -58,6 +86,7 @@ public class HeroInfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hero_info);
 
+
         Bundle intent = getIntent().getExtras();
         if (intent != null && intent.containsKey("id")) {
             HeroService heroService = BeanContainer.getInstance().getHeroService();
@@ -74,31 +103,6 @@ public class HeroInfoActivity extends BaseActivity {
                 mToolbar.setNavigationIcon(iconDrawable);
             }
             getSupportActionBar().setTitle(hero.getLocalizedName());
-
-            FragmentStatePagerAdapter adapter = new HeroPagerAdapter(getSupportFragmentManager(), this, hero);
-
-            final ViewPager pager = (ViewPager) findViewById(R.id.pager);
-            pager.setAdapter(adapter);
-            pager.setOffscreenPageLimit(1);
-            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-            tabLayout.setupWithViewPager(pager);
-        }
-    }
-
-
-    public static class OnDotaHeroClickListener implements View.OnClickListener {
-        private long heroId;
-
-        public OnDotaHeroClickListener(long heroId) {
-            this.heroId = heroId;
-        }
-
-        @Override
-        public void onClick(View v) {
-            Context context = v.getContext();
-            Intent intent = new Intent(context, HeroInfoActivity.class);
-            intent.putExtra("id", heroId);
-            context.startActivity(intent);
         }
     }
 
@@ -112,7 +116,6 @@ public class HeroInfoActivity extends BaseActivity {
     @Override
     public void onResume() {
         super.onResume();
-        hideSystemUI();
         Chartboost.onResume(this);
     }
 
@@ -124,9 +127,25 @@ public class HeroInfoActivity extends BaseActivity {
 
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Chartboost.onDestroy(this);
+    public void onRequestFailure(SpiceException spiceException) {
+        //do nothing
+    }
+
+    @Override
+    public void onRequestSuccess(HeroInfo mHeroInfo) {
+        this.mHeroInfo = mHeroInfo;
+        FragmentStatePagerAdapter adapter = new HeroPagerAdapter(getSupportFragmentManager(), this, hero, mHeroInfo);
+
+        final ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        pager.setAdapter(adapter);
+        pager.setOffscreenPageLimit(1);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(pager);
+    }
+
+
+    private void loadHeroInfoData(Context context) {
+        mSpiceManager.execute(new HeroInfoLoadRequest(context.getApplicationContext(), hero.getLocalizedName()), this);
     }
 
 }

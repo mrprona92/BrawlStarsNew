@@ -10,6 +10,7 @@
     <string name="error_during_load">There was an error during loading</string>
     <string name="info">INFO</string>
     <string name="skills">SKILLS</string>
+    <string name="counter">COUNTER</string>
     <string name="melee">{0} (Melee)</string>
     <string name="level">Level</string>
     <string name="hp">Hit points</string>
@@ -337,7 +338,7 @@
     <string name="appSignature">a7abfb73b301cc66f3632702e373fc954d9cc495</string>
 
 
-    <string name="app_name">BrawlStarDemo</string>
+    <string name="app_name">BrawlStar Assistant</string>
 
     <string name="str_easyofuse">Easy Of Use</string>
     <string name="str_range">Range</string>
@@ -369,6 +370,12 @@
     <string name="ability_lblRecharge">Recharge Time</string>
     <string name="ability_lblDame">Damage</string>
     <string name="ability_lblAttackDelay">Attack Delay</string>
+
+    <string name="ability_upgrade">Upgrade Priority</string>
+
+
+    <string name="ability_type_default">PRIMARY ATTACK</string>
+    <string name="ability_type_super">SUPER ABILITY</string>
 
 
 

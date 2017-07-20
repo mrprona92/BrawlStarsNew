@@ -23,7 +23,7 @@ import java.util.Map;
  */
 public class Helper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "brawlstars.db";
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 4;
     private Context mContext;
 
     /*public static final String CREATE_ITEMS_FROM="create table if not exists "+

@@ -15,7 +15,7 @@ android {
         applicationId "com.prodo.brawlassistant"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 3
+        versionCode 4
         versionName "1.0.0"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true

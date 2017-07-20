@@ -65,7 +65,6 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
     TextView lblToolbarTitle;
 
 
-    private Spinner navSpinner;
 
     private FragmentManager mFragmentManager;
 
@@ -90,16 +89,19 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
     protected void onCreate(final Bundle savedInstanceState) {
         setTheme(R.style.Infodota);
         super.onCreate(savedInstanceState);
-        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/future.ttf"); // font from assets: "assets/fonts/Roboto-Regular.ttf
+
         setContentView(R.layout.activity_horizontal_ntb);
         MenuFragment.updateActivity(this);
         initUI();
-        UpdateUtils.checkNewVersion(this, false);
+
+        //UpdateUtils.checkNewVersion(this, false);
 
         appContext = this;
 
         AppRater.showRate(appContext);
         initControl();
+
+        openScreen(ScreenIDs.ScreenTab.HERO, HeroesList.class, null, true, false);
     }
 
     public void updateUI() {
@@ -228,7 +230,7 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
         }, 500);
 
 
-        navSpinner = (Spinner) mToolbar.findViewById(R.id.nav_spinner);
+        /*navSpinner = (Spinner) mToolbar.findViewById(R.id.nav_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 R.layout.spinner_item, getResources().getStringArray(R.array.main_menu));
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
@@ -237,7 +239,7 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
         int selected = prefs.getInt("mainMenuLastSelected", 0);
 
         navSpinner.setOnItemSelectedListener(this);
-        navSpinner.setSelection(Math.min(selected, adapter.getCount() - 1));
+        navSpinner.setSelection(Math.min(selected, adapter.getCount() - 1));*/
         // navSpinner.setVisibility(View.GONE);
     }
 
@@ -424,7 +426,6 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
         /*if (mCurrentFragment instanceof MenuFragment) {
             navSpinner.setVisibility(View.VISIBLE);
         } else {*/
-        navSpinner.setVisibility(View.GONE);
         //}
 
         getMenuInflater().inflate(R.menu.search, menu);
