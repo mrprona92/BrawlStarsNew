@@ -24,9 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.chartboost.sdk.Chartboost;
@@ -39,10 +37,10 @@ import com.mrprona.dota2assitant.base.fragment.SearchableFragment;
 import com.mrprona.dota2assitant.base.menu.fragment.MenuFragment;
 import com.mrprona.dota2assitant.base.util.AppRater;
 import com.mrprona.dota2assitant.base.util.UpdateUtils;
+import com.mrprona.dota2assitant.base.youtube.YoutubeFragment;
 import com.mrprona.dota2assitant.hero.fragment.HeroesList;
 import com.mrprona.dota2assitant.item.fragment.ItemsList;
 import com.mrprona.dota2assitant.news.fragment.NewsList;
-import com.util.TypefaceUtil;
 
 import java.util.ArrayList;
 
@@ -63,7 +61,6 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
     @Nullable
     @BindView(R.id.lblToolbarTitle)
     TextView lblToolbarTitle;
-
 
 
     private FragmentManager mFragmentManager;
@@ -157,10 +154,10 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
         final ArrayList<NavigationTabBar.Model> models = new ArrayList<>();
         models.add(
                 new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.ic_fifth),
+                        getResources().getDrawable(R.drawable.ic_eighth),
                         Color.parseColor(colors[4]))
                         .selectedIcon(getResources().getDrawable(R.drawable.ic_eighth))
-                        .title("Medal")
+                        .title("Brawler")
                         .badgeTitle("777")
                         .build()
         );
@@ -168,26 +165,26 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
                 new NavigationTabBar.Model.Builder(
                         getResources().getDrawable(R.drawable.ic_first),
                         Color.parseColor(colors[0]))
-                        .selectedIcon(getResources().getDrawable(R.drawable.ic_sixth))
-                        .title("Heart")
+                        .selectedIcon(getResources().getDrawable(R.drawable.ic_first))
+                        .title("Item")
                         .badgeTitle("NTB")
                         .build()
         );
         models.add(
                 new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.ic_second),
+                        getResources().getDrawable(R.drawable.ic_menu_twitch),
                         Color.parseColor(colors[1]))
 //                        .selectedIcon(getResources().getDrawable(R.drawable.ic_eighth))
-                        .title("Cup")
+                        .title("Channel")
                         .badgeTitle("with")
                         .build()
         );
         models.add(
                 new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.ic_third),
+                        getResources().getDrawable(R.drawable.ic_tab4_menu),
                         Color.parseColor(colors[2]))
-                        .selectedIcon(getResources().getDrawable(R.drawable.ic_seventh))
-                        .title("Diploma")
+                        .selectedIcon(getResources().getDrawable(R.drawable.ic_tab4_menu))
+                        .title("Menu")
                         .badgeTitle("state")
                         .build()
         );
@@ -201,7 +198,7 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
                 } else if (index == 1) {
                     openScreen(ScreenIDs.ScreenTab.NEWS, NewsList.class, null, true, false);
                 } else if (index == 2) {
-                    openScreen(ScreenIDs.ScreenTab.LIVE, HeroesList.class, null, true, false);
+                    openScreen(ScreenIDs.ScreenTab.LIVE, YoutubeFragment.class, null, true, false);
                 } else if (index == 3) {
                     openScreen(ScreenIDs.ScreenTab.MENU, MenuFragment.class, null, true, false);
                 }
@@ -286,8 +283,9 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
         }, Constants.MILLIS_FOR_EXIT);*/
         if (mFragmentManager.getBackStackEntryCount() >= 1) {
             Log.d(TAG, "onBackPressed() called. More than 0 fragment in back stack");
-            clearBackStack();
-            openScreen(ScreenIDs.ScreenTab.MENU, MenuFragment.class, null, false, false);
+            super.onBackPressed();
+            /*clearBackStack();
+            openScreen(ScreenIDs.ScreenTab.MENU, MenuFragment.class, null, false, false);*/
             return;
         } else {
             Log.d(TAG, "onBackPressed() called. Finish()");
@@ -377,17 +375,17 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
                 bundle.putString(AgreementFragment.ARG_URL, "http://www.gosugamers.net/dota2/rankings");
                 openScreen(ScreenIDs.ScreenTab.MENU, AgreementFragment.class, bundle, true, true);
                 */
-                openScreen(ScreenIDs.ScreenTab.MENU, HeroesList.class, null, true, true);
+                openScreen(ScreenIDs.ScreenTab.HERO, HeroesList.class, null, true, true);
                 break;
             case 1:
-                openScreen(ScreenIDs.ScreenTab.MENU, ItemsList.class, null, true, true);
+                openScreen(ScreenIDs.ScreenTab.NEWS, NewsList.class, null, true, true);
                 break;
             case 2:
                 //mFragmentDetails = new ItemsList();
-                openScreen(ScreenIDs.ScreenTab.MENU, ItemsList.class, null, true, true);
+                openScreen(ScreenIDs.ScreenTab.LIVE, YoutubeFragment.class, null, true, true);
                 break;
             case 3:
-                openScreen(ScreenIDs.ScreenTab.MENU, NewsList.class, null, true, true);
+                openScreen(ScreenIDs.ScreenTab.MENU, MenuFragment.class, null, true, true);
                 break;
             case 7:
                 UpdateUtils.checkNewVersion(HorizontalNtbActivity.this, true);
@@ -580,7 +578,6 @@ public class HorizontalNtbActivity extends BaseActivity implements SearchView.On
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.edit().putInt("mainMenuLastSelected", lastSelected).commit();
     }
-
 
 
 }

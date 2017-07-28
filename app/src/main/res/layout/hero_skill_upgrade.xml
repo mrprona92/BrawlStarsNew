@@ -5,27 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="55dp"
     android:background="#423752"
-    android:orientation="horizontal"
-    android:weightSum="1">
+    android:orientation="vertical"
+    >
 
     <TextView
         android:id="@+id/lblUpgradeName"
-        android:layout_height="match_parent"
-        android:layout_width="0px"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:padding="@dimen/padding_normal"
         android:text="@string/ability_lblRange"
         android:textSize="@dimen/text_large"
-        android:textStyle="bold"
-        android:layout_weight="0.8"/>
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imgSKillUpgrade"
-        android:layout_height="match_parent"
-        android:layout_width="0px"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_gravity="center_vertical"
         android:layout_margin="2dp"
-        android:scaleType="centerCrop"
-        android:layout_weight="0.15">
+        android:scaleType="fitCenter">
 
     </ImageView>
 

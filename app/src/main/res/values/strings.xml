@@ -332,7 +332,6 @@
     <string name="ask_quit">Do you want quit application?</string>
 
 
-
     <string name="facebook_app_id">622236094645140</string>
     <string name="appIDChartboost">5885a19e04b0163490486ca9</string>
     <string name="appSignature">a7abfb73b301cc66f3632702e373fc954d9cc495</string>
@@ -364,7 +363,6 @@
     <string name="watch_on_youtube">Watch on YouTube</string>
 
 
-
     <string name="ability_lblSkillType">Skill Type Attack</string>
     <string name="ability_lblRange">Range</string>
     <string name="ability_lblRecharge">Recharge Time</string>
@@ -373,11 +371,16 @@
 
     <string name="ability_upgrade">Upgrade Priority</string>
 
+    <string name="ability_favorable">Favorable Matchups</string>
+    <string name="ability_difficult">Difficult Matchups</string>
+    <string name="ability_hardcounter">Hard Counters</string>
+
+    <string name="ability_strength">Strengths</string>
+    <string name="ability_weakness">Weaknesses</string>
+    <string name="ability_tips">Tips \u0026 Tactics</string>
 
     <string name="ability_type_default">PRIMARY ATTACK</string>
     <string name="ability_type_super">SUPER ABILITY</string>
-
-
 
 
 </resources>

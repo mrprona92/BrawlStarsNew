@@ -9,10 +9,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.mrprona.dota2assitant.R;
 import com.mrprona.dota2assitant.base.fragment.SCBaseFragment;
-import com.mrprona.dota2assitant.base.service.LocalSpiceService;
-import com.mrprona.dota2assitant.hero.adapter.SkillAdapter;
+import com.mrprona.dota2assitant.hero.adapter.CounterAdapter;
 import com.mrprona.dota2assitant.hero.api.Hero;
-import com.octo.android.robospice.SpiceManager;
 import com.util.responses.DefaultAbilityInfo;
 import com.util.responses.HeroInfo;
 
@@ -33,9 +31,16 @@ public class HeroCounter extends SCBaseFragment {
     private List<DefaultAbilityInfo> mListDefaultAbility = new ArrayList<>();
 
 
-    private SkillAdapter mSkillAdapter;
+    private CounterAdapter favorableAdapter;
+
+    private CounterAdapter difficultAdapter;
+
+    private CounterAdapter hardCounterAdapter;
 
     private RecyclerView mRecycleView;
+
+
+
 
 
     public static HeroCounter newInstance(Hero hero, HeroInfo mHeroInfo) {
@@ -63,10 +68,38 @@ public class HeroCounter extends SCBaseFragment {
     @Override
     protected void initUI() {
         mRecycleView = (RecyclerView) findViewById(R.id.list);
-        mSkillAdapter = new SkillAdapter(getContext());
-        mRecycleView.setItemAnimator(new DefaultItemAnimator());
-        mRecycleView.setAdapter(mSkillAdapter);
-        mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        if(mHeroInfo.getHardCounters().isEmpty()){
+
+        }else{
+            favorableAdapter = new CounterAdapter(mHeroInfo.getHardCounters(), mAppContext);
+            mRecycleView.setItemAnimator(new DefaultItemAnimator());
+            mRecycleView.setAdapter(favorableAdapter);
+            mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
+
+        if(mHeroInfo.getHardCounters().isEmpty()){
+
+        }else{
+            favorableAdapter = new CounterAdapter(mHeroInfo.getHardCounters(), mAppContext);
+            mRecycleView.setItemAnimator(new DefaultItemAnimator());
+            mRecycleView.setAdapter(favorableAdapter);
+            mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
+
+
+        if(mHeroInfo.getHardCounters().isEmpty()){
+
+        }else{
+            favorableAdapter = new CounterAdapter(mHeroInfo.getHardCounters(), mAppContext);
+            mRecycleView.setItemAnimator(new DefaultItemAnimator());
+            mRecycleView.setAdapter(favorableAdapter);
+            mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
+
+
+
     }
 
     @Override
@@ -76,16 +109,7 @@ public class HeroCounter extends SCBaseFragment {
 
     @Override
     protected void initData() {
-        DefaultAbilityInfo ability1 = new DefaultAbilityInfo();
-        ability1.setName(mHeroInfo.getmSuperAbility().getName());
-        ability1.setDescription(mHeroInfo.getmSuperAbility().getDescription());
-        ability1.setAttackDeplay(mHeroInfo.getmSuperAbility().getAttackDeplay());
-        ability1.setDamage(mHeroInfo.getmSuperAbility().getDamage());
-        ability1.setRange(mHeroInfo.getmSuperAbility().getRange());
-        ability1.setTypeAbility(mHeroInfo.getmSuperAbility().getTypeAbility());
-        mListDefaultAbility.add(mHeroInfo.getmDefaultAbility());
-        mListDefaultAbility.add(ability1);
-        mSkillAdapter.setListAdapter(mListDefaultAbility);
+
     }
 
     @Override

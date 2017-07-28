@@ -2,18 +2,17 @@ package com.mrprona.dota2assitant.base.fragment;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.mrprona.dota2assitant.base.activity.BaseActivity;
 import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
-import com.mrprona.dota2assitant.base.activity.ListHolderActivity;
+import com.mrprona.dota2assitant.base.configs.ScreenIDs;
+import com.mrprona.dota2assitant.hero.activity.HeroInfoActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -28,9 +27,10 @@ import butterknife.Unbinder;
 public abstract class SCBaseFragment extends Fragment {
     protected final String TAG = getClass().getSimpleName();
 
-    private Bundle mResultBundle;
 
-    protected BaseActivity mActivity;
+    protected BaseActivity mBaseActivity;
+    protected HorizontalNtbActivity mActivity;
+
     protected boolean mIsViewInitialized = false;
     protected View mView;
     protected Unbinder mUnbinder;
@@ -39,25 +39,38 @@ public abstract class SCBaseFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mActivity = (BaseActivity) context;
+        if (context instanceof HorizontalNtbActivity) {
+            mActivity = (HorizontalNtbActivity) context;
+        } else {
+            mBaseActivity = (BaseActivity) context;
+        }
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAppContext = mActivity.getApplicationContext();
+        if (mActivity != null) {
+            mAppContext = mActivity.getApplicationContext();
+        } else {
+            mAppContext = mBaseActivity.getApplicationContext();
+        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mActivity = (BaseActivity) getActivity();
+        if (getActivity() instanceof HorizontalNtbActivity) {
+            mActivity = (HorizontalNtbActivity) getActivity();
+        } else {
+            mBaseActivity = (BaseActivity) getActivity();
+        }
+
         if (mView == null) {
             mView = inflater.inflate(getViewContent(), container, false);
             mUnbinder = ButterKnife.bind(this, mView);
             mIsViewInitialized = false;
         } else {
             mIsViewInitialized = true;
-            onComeBackFragment(mResultBundle);
             if (mView.getParent() != null) {
                 ((ViewGroup) mView.getParent()).removeView(mView);
             }
@@ -75,7 +88,7 @@ public abstract class SCBaseFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-       // mActivity.updateUI();
+        // mActivity.updateUI();
     }
 
     @Override
@@ -112,6 +125,7 @@ public abstract class SCBaseFragment extends Fragment {
 
 
     protected abstract void registerListeners();
+
     protected abstract void unregisterListener();
 
     public void onConnected() {
@@ -134,11 +148,11 @@ public abstract class SCBaseFragment extends Fragment {
     }
 
     protected void hideProgressDialog(final boolean isWait) {
-        if(mActivity != null) mActivity.hideProgressDialog(isWait);
+        if (mActivity != null) mActivity.hideProgressDialog(isWait);
     }
 
     public void showProgressDialog() {
-        if(mActivity != null) mActivity.showProgressDialog(null, true); //"Now Loading..."
+        if (mActivity != null) mActivity.showProgressDialog(null, true); //"Now Loading..."
     }
 
     @Override
@@ -150,6 +164,7 @@ public abstract class SCBaseFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mActivity = null;
+        mBaseActivity = null;
     }
 
 
@@ -166,4 +181,10 @@ public abstract class SCBaseFragment extends Fragment {
         }
     }
 
+
+    protected void openScreen(final ScreenIDs.ScreenTab tab, final Class<? extends SCBaseFragment> fragmentClass, final Bundle bundles, final boolean isAnimate,
+                              final boolean shouldAddToBackstack) {
+        if (mActivity != null)
+            mActivity.openScreen(tab, fragmentClass, bundles, isAnimate, shouldAddToBackstack);
+    }
 }

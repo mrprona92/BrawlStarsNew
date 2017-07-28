@@ -62,7 +62,7 @@ public class NewsList extends UpdatableRecyclerFragment<NewsItem, NewsItemViewHo
     }
 
     private void loadNews() {
-        final BaseActivity activity = (BaseActivity) getActivity();
+        final HorizontalNtbActivity activity = (HorizontalNtbActivity) getActivity();
         if (activity != null) {
             setRefreshing(true);
             Long fromDate = null;

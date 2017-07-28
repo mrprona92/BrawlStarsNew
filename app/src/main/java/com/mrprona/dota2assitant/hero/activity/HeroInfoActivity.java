@@ -9,11 +9,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.chartboost.sdk.Chartboost;
 import com.mrprona.dota2assitant.BeanContainer;
@@ -30,6 +28,8 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.util.responses.HeroInfo;
 
+import butterknife.ButterKnife;
+
 /**
  * User: ABadretdinov
  * Date: 02.09.13
@@ -43,6 +43,7 @@ public class HeroInfoActivity extends BaseActivity implements RequestListener<He
 
     @Override
     public void onStart() {
+        ButterKnife.bind(this);
         if (!mSpiceManager.isStarted()) {
             mSpiceManager.start(this);
             loadHeroInfoData(this);

@@ -48,7 +48,6 @@ public class HeroSkills extends SCBaseFragment {
     private RecyclerView mRecycleView;
 
 
-
     public static HeroSkills newInstance(Hero hero, HeroInfo mHeroInfo) {
         HeroSkills fragment = new HeroSkills();
         fragment.mHeroInfo = mHeroInfo;
@@ -151,7 +150,12 @@ public class HeroSkills extends SCBaseFragment {
         View child = getLayoutInflater(null).inflate(R.layout.hero_skill_upgrade, null);
         TextView mTextView = (TextView) child.findViewById(R.id.lblUpgradeName);
         ImageView mImageView = (ImageView) child.findViewById(R.id.imgSKillUpgrade);
-        mTextView.setText(text);
+
+        StringBuffer strbuff=new StringBuffer(text);
+        char ch=Character.toUpperCase(strbuff.charAt(3));
+        strbuff.setCharAt(3, ch);
+        mTextView.setText(strbuff.toString());
+
 
         String skill = text.substring(3, text.length());
         if (skill.equalsIgnoreCase("health")) {
