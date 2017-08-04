@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.mrprona.dota2assitant.R;
 import com.mrprona.dota2assitant.hero.api.Hero;
+import com.mrprona.dota2assitant.hero.fragment.HeroCounter;
 import com.mrprona.dota2assitant.hero.fragment.HeroDefaultItemBuild;
 import com.mrprona.dota2assitant.hero.fragment.HeroSkills;
 import com.mrprona.dota2assitant.hero.fragment.HeroStatInfo;
@@ -37,14 +38,14 @@ public class HeroPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return HeroSkills.newInstance(hero, mHeroInfo);
             case 2:
-                return HeroSkills.newInstance(hero, mHeroInfo);
+                return HeroCounter.newInstance(hero, mHeroInfo);
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override

@@ -76,7 +76,7 @@ public class HeroSkills extends SCBaseFragment {
         mRecycleView.setItemAnimator(new DefaultItemAnimator());
         mRecycleView.setAdapter(mSkillAdapter);
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        mRecycleView.setNestedScrollingEnabled(false);
     }
 
     @Override
