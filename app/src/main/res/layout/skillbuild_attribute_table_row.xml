@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.mrprona.dota2assitant.base.view.SquaredTextView
+    <com.mrprona.brawlassistant.base.view.SquaredTextView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_margin="@dimen/half_view_padding"
@@ -15,7 +15,7 @@
         android:tag="0"
         android:textColor="@color/primary" />
 
-    <com.mrprona.dota2assitant.base.view.SquaredTextView
+    <com.mrprona.brawlassistant.base.view.SquaredTextView
         android:layout_width="@dimen/skillbuild_image_size"
         android:layout_height="@dimen/skillbuild_image_size"
         android:layout_margin="@dimen/half_view_padding"
@@ -25,7 +25,7 @@
         android:tag="1"
         android:textColor="@color/primary" />
 
-    <com.mrprona.dota2assitant.base.view.SquaredTextView
+    <com.mrprona.brawlassistant.base.view.SquaredTextView
         android:layout_width="@dimen/skillbuild_image_size"
         android:layout_height="@dimen/skillbuild_image_size"
         android:layout_margin="@dimen/half_view_padding"
@@ -35,7 +35,7 @@
         android:tag="2"
         android:textColor="@color/primary" />
 
-    <com.mrprona.dota2assitant.base.view.SquaredTextView
+    <com.mrprona.brawlassistant.base.view.SquaredTextView
         android:layout_width="@dimen/skillbuild_image_size"
         android:layout_height="@dimen/skillbuild_image_size"
         android:layout_margin="@dimen/half_view_padding"
@@ -45,7 +45,7 @@
         android:tag="3"
         android:textColor="@color/primary" />
 
-    <com.mrprona.dota2assitant.base.view.SquaredTextView
+    <com.mrprona.brawlassistant.base.view.SquaredTextView
         android:layout_width="@dimen/skillbuild_image_size"
         android:layout_height="@dimen/skillbuild_image_size"
         android:layout_margin="@dimen/half_view_padding"

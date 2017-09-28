@@ -47,7 +47,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.mrprona.dota2assitant.base.view.PinnedSectionListView
+    <com.mrprona.brawlassistant.base.view.PinnedSectionListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="0px"

@@ -1,7 +1,7 @@
 package com.util.responses;
 
 
-import com.mrprona.dota2assitant.hero.api.Hero;
+import com.mrprona.brawlassistant.hero.api.Hero;
 
 import java.io.Serializable;
 import java.util.List;

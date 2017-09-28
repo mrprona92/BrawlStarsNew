@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.mrprona.dota2assitant.R;
-import com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity;
+import com.mrprona.brawlassistant.R;
+import com.mrprona.brawlassistant.base.activity.HorizontalNtbActivity;
 import com.octo.android.robospice.SpiceManager;
 import com.octo.android.robospice.UncachedSpiceService;
 import com.octo.android.robospice.persistence.exception.SpiceException;

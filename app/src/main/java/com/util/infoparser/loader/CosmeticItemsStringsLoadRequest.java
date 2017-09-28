@@ -3,9 +3,9 @@ package com.util.infoparser.loader;
 import android.content.Context;
 import android.os.Environment;
 
-import com.mrprona.dota2assitant.base.service.TaskRequest;
-import com.mrprona.dota2assitant.base.util.FileUtils;
-import com.mrprona.dota2assitant.base.util.VDFtoJsonParser;
+import com.mrprona.brawlassistant.base.service.TaskRequest;
+import com.mrprona.brawlassistant.base.util.FileUtils;
+import com.mrprona.brawlassistant.base.util.VDFtoJsonParser;
 import com.google.gson.Gson;
 import com.util.infoparser.api.CosmeticItemStringHolder;
 

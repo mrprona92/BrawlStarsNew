@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/hero_background">
 
-    <com.mrprona.dota2assitant.base.view.PagerContainer
+    <com.mrprona.brawlassistant.base.view.PagerContainer
         android:id="@+id/pager_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,6 +15,6 @@
             android:layout_width="@dimen/carousel_width"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal" />
-    </com.mrprona.dota2assitant.base.view.PagerContainer>
+    </com.mrprona.brawlassistant.base.view.PagerContainer>
 
 </RelativeLayout>

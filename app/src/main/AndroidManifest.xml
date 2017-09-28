@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mrprona.dota2assitant"
+    package="com.mrprona.brawlassistant"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -23,7 +23,7 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name="com.mrprona.dota2assitant.base.activity.SteamLoginActivity"
+            android:name=".base.activity.SteamLoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/Infodota.Dark" />
      <!--   <activity
@@ -33,39 +33,39 @@
             android:theme="@style/splashScreenTheme"
             android:windowSoftInputMode="adjustNothing"></activity>-->
         <activity
-            android:name="com.mrprona.dota2assitant.base.activity.HorizontalNtbActivity"
+            android:name=".base.activity.HorizontalNtbActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/splashScreenTheme"
             android:windowSoftInputMode="adjustNothing"></activity>
 
         <activity
-            android:name="com.mrprona.dota2assitant.hero.activity.HeroInfoActivity"
+            android:name=".hero.activity.HeroInfoActivity"
             android:configChanges="keyboard|orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.mrprona.dota2assitant.hero.activity.GuideActivity"
+            android:name=".hero.activity.GuideActivity"
             android:configChanges="keyboard|orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.mrprona.dota2assitant.item.activity.ItemInfoActivity"
-            android:configChanges="keyboard|orientation|screenSize"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.mrprona.dota2assitant.base.activity.AboutActivity"
+            android:name=".item.activity.ItemInfoActivity"
             android:configChanges="keyboard|orientation|screenSize"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.mrprona.dota2assitant.hero.activity.GuideCreatorActivity"
+            android:name=".base.activity.AboutActivity"
+            android:configChanges="keyboard|orientation|screenSize"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".hero.activity.GuideCreatorActivity"
             android:configChanges="keyboard|orientation|screenSize" />
         <activity
-            android:name="com.mrprona.dota2assitant.item.activity.ItemSelectActivity"
+            android:name=".item.activity.ItemSelectActivity"
             android:configChanges="keyboard|orientation|screenSize" />
 
         <activity
-            android:name="com.mrprona.dota2assitant.news.activity.NewsItemActivity"
+            android:name=".news.activity.NewsItemActivity"
             android:configChanges="keyboard|orientation|screenSize" />
 
         <activity
@@ -78,7 +78,7 @@
             android:excludeFromRecents="true"
             android:hardwareAccelerated="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
-        <activity android:name="com.mrprona.dota2assitant.base.activity.FullAdsActivity"></activity>
+        <activity android:name=".base.activity.FullAdsActivity"></activity>
 
         <!--
             <activity
@@ -87,7 +87,7 @@
         -->
 
         <activity
-            android:name="com.mrprona.dota2assitant.base.activity.SplashActivity"
+            android:name=".base.activity.SplashActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
@@ -102,16 +102,16 @@
             android:name="com.octo.android.robospice.UncachedSpiceService"
             android:exported="false" />
         <service
-            android:name="com.mrprona.dota2assitant.base.service.LocalSpiceService"
+            android:name=".base.service.LocalSpiceService"
             android:exported="false" />
 
-        <service android:name="com.mrprona.dota2assitant.base.service.notification.MyFirebaseMessagingService">
+        <service android:name=".base.service.notification.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name="com.mrprona.dota2assitant.base.service.notification.MyFirebaseInstanceIDService">
+        <service android:name=".base.service.notification.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
@@ -119,7 +119,7 @@
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:authorities="com.facebook.app.FacebookContentProvidercom.mrprona.dota2assitant"
+            android:authorities="com.facebook.app.FacebookContentProvidercom.mrprona.brawlassistant"
             android:exported="true" />
 
     </application>

@@ -72,10 +72,27 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#5CC044</color>
 
+    <!-- CONTEST COMMON -->
     <color name="colorHeroBackground1">#5CC044</color>
     <color name="colorHeroBackground2">#186F3A</color>
     <color name="colorHeroBackground3">#13532B</color>
     <color name="colorHeroBackground4">#0F4323</color>
+
+    <!-- CONTEST RARE -->
+    <color name="colorHeroRare1">#377dff</color>
+    <color name="colorHeroRare2">#0048ce</color>
+    <color name="colorHeroRare3">#003cab</color>
+
+    <!-- CONTEST EPIC -->
+    <color name="colorHeroEpic1">#ff3fbc</color>
+    <color name="colorHeroEpic2">#d1008b</color>
+    <color name="colorHeroEpic3">#af0095</color>
+
+    <!-- CONTEST LEGENDARY -->
+    <color name="colorHeroLegend1">#ffa927</color>
+    <color name="colorHeroLegend2">#cc8100</color>
+    <color name="colorHeroLegend3">#c67102</color>
+
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="cmn_background_divider">#DDD</color>

@@ -4,16 +4,16 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
-import com.mrprona.dota2assitant.BeanContainer;
-import com.mrprona.dota2assitant.base.api.Constants;
-import com.mrprona.dota2assitant.base.service.TaskRequest;
-import com.mrprona.dota2assitant.base.util.FileUtils;
-import com.mrprona.dota2assitant.hero.api.Hero;
-import com.mrprona.dota2assitant.hero.api.responses.HeroResponse;
-import com.mrprona.dota2assitant.hero.api.responses.HeroResponsesSection;
-import com.mrprona.dota2assitant.hero.service.HeroService;
-import com.mrprona.dota2assitant.item.api.Item;
-import com.mrprona.dota2assitant.item.service.ItemService;
+import com.mrprona.brawlassistant.BeanContainer;
+import com.mrprona.brawlassistant.base.api.Constants;
+import com.mrprona.brawlassistant.base.service.TaskRequest;
+import com.mrprona.brawlassistant.base.util.FileUtils;
+import com.mrprona.brawlassistant.hero.api.Hero;
+import com.mrprona.brawlassistant.hero.api.responses.HeroResponse;
+import com.mrprona.brawlassistant.hero.api.responses.HeroResponsesSection;
+import com.mrprona.brawlassistant.hero.service.HeroService;
+import com.mrprona.brawlassistant.item.api.Item;
+import com.mrprona.brawlassistant.item.service.ItemService;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

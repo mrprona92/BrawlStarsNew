@@ -2,7 +2,7 @@ package com.parser;
 
 import android.content.Context;
 
-import com.mrprona.dota2assitant.hero.api.TalentTree;
+import com.mrprona.brawlassistant.hero.api.TalentTree;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
